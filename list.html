@@ -162,6 +162,14 @@ button{cursor:pointer}
 .quest small{color:var(--muted);font-size:.86rem}
 .quest .gauge{grid-column:2;height:5px}
 .quest .btn{grid-row:1/3;grid-column:3}
+.nextq{grid-column:1/-1;display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:1rem;align-items:center;padding:1rem 1.3rem;background:linear-gradient(90deg,rgba(222,184,112,.16),transparent 70%),var(--panel)}
+.nextq .qi{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:rgba(222,184,112,.14);border:1px solid var(--gold);color:var(--gold-hi);box-shadow:0 0 18px -4px var(--gold)}
+.nextq .qi svg{width:24px;height:24px}
+.nextq small{display:block;font-family:var(--display);font-size:.72rem;letter-spacing:.18em;color:var(--gold)}
+.nextq b{display:block;font-family:var(--display);font-weight:600;font-size:1.3rem;line-height:1.2}
+.nextq span:not(.gwrap){color:var(--muted);font-size:.95rem}
+.nextq.warn .qi{color:var(--strike);border-color:var(--strike);background:rgba(224,72,90,.1);box-shadow:0 0 18px -4px var(--strike)}
+.nextq.done .qi{color:var(--yes);border-color:var(--yes);background:rgba(127,207,159,.1);box-shadow:0 0 18px -4px var(--yes)}
 .fstep{display:grid;grid-template-columns:110px minmax(0,1fr) 44px;gap:.7rem;align-items:center;padding:.38rem 0;font-size:.92rem}
 .fstep span{color:var(--muted)}
 .fbar{height:22px;border-radius:5px;background:rgba(255,255,255,.04);overflow:hidden}
@@ -217,6 +225,7 @@ button{cursor:pointer}
 .art .big{position:absolute;left:50%;top:44%;width:118px;transform:translate(-50%,-50%);filter:drop-shadow(0 0 18px rgba(255,235,190,.45)) drop-shadow(0 10px 10px rgba(0,0,0,.45))}
 .plaque{position:relative;margin:-26px 14px 0;padding:.65rem .8rem .7rem;text-align:center;background:linear-gradient(180deg,#3a2b16,#1e160b);clip-path:polygon(0 0,100% 0,96% 50%,100% 100%,0 100%,4% 50%);box-shadow:inset 0 0 0 1px var(--gold-lo)}
 .plaque h3{margin:0;font-family:var(--display);font-weight:800;font-size:1.4rem;line-height:1.1;letter-spacing:.03em;color:var(--gold-hi);text-shadow:0 1px 0 #000}
+.plaque h3.long{font-size:1.08rem}
 .ctext{padding:.8rem 1.3rem 1rem;text-align:center;display:flex;flex-direction:column;align-items:center;height:calc(56% - 34px)}
 .chouse{margin:0;font-family:var(--display);font-weight:600;font-size:.82rem;letter-spacing:.12em;color:#6b4f25}
 .cepi{margin:.6rem 0 0;font-family:var(--flavor);font-style:italic;font-size:1.15rem;line-height:1.35;color:#4a3820;max-width:24ch}
@@ -419,6 +428,8 @@ button{cursor:pointer}
 .notice.warn svg{color:var(--strike)}
 .notice b{display:block;font-family:var(--display);font-weight:600;font-size:.9rem;letter-spacing:.06em;color:var(--gold-hi)}
 .notice span{font-size:.92rem;line-height:1.35}
+.notice>div{flex:1;min-width:0}
+.notice .nact{flex:none;margin-left:auto}
 .rankup{position:fixed;inset:0;z-index:95;display:grid;place-items:center;pointer-events:none;background:radial-gradient(circle,rgba(10,14,28,.6),rgba(10,14,28,.85));animation:rk 2.6s ease-in-out forwards}
 .rankup .rays{position:absolute;width:140vmax;height:140vmax;background:repeating-conic-gradient(rgba(246,210,130,.12) 0 4deg,transparent 4deg 14deg);mask:radial-gradient(circle,#000 5%,transparent 45%);-webkit-mask:radial-gradient(circle,#000 5%,transparent 45%);animation:spin2 6s linear infinite}
 @keyframes spin2{to{transform:rotate(360deg)}}
@@ -434,6 +445,35 @@ button{cursor:pointer}
 .mform{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1rem}
 .mform .wide{grid-column:1/-1}
 .note-s{font-size:.85rem;color:var(--muted);margin:.8rem 0 0}
+.mbox textarea.inp{resize:vertical;line-height:1.45}
+.tstep{margin:0 0 .3rem;text-align:center;font-family:var(--display);font-size:.75rem;letter-spacing:.18em;color:var(--gold)}
+.tpair{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.6rem}
+.tc{display:grid;grid-template-columns:28px minmax(0,1fr);gap:.1rem .6rem;align-items:center;padding:.7rem .75rem;border:1px solid var(--line);border-left:3px solid var(--hc);border-radius:10px;background:#0f1630}
+.tc svg{grid-row:1/3;width:26px;height:31px}
+.tc b{font-weight:500;line-height:1.2}
+.tc small{color:var(--muted);font-size:.8rem;line-height:1.25}
+.tc>span{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.45rem}
+.mbtns.tcol{flex-direction:column;align-items:stretch}
+.mbtns.tcol .btn{justify-content:center;white-space:normal;text-align:center}
+.mbtns.tfoot{gap:1.4rem;margin-top:1rem}
+.dsec h4 small{font-family:var(--body);font-weight:400;letter-spacing:0;color:var(--muted);font-size:.8rem}
+#printHost{display:none}
+/* print-sheet */
+#printHost{font-family:Georgia,"Times New Roman",serif;color:#1d1710;background:#fff}
+#printHost .pp{padding:1.2rem 0;break-after:page;page-break-after:always}
+#printHost h1{font-size:22pt;margin:0 0 .3rem;font-weight:600;letter-spacing:.04em}
+#printHost h3{margin:0 0 .3rem;font-size:13pt;border-bottom:1px solid #b9a37a;padding-bottom:.2rem}
+#printHost .ptables{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem 1.4rem;margin-top:1rem}
+#printHost .pt{break-inside:avoid}
+#printHost ol{margin:0;padding-left:1.2rem;font-size:10.5pt;line-height:1.45}
+#printHost i{color:#7a6a50;font-style:normal}
+#printHost .pescort{columns:3;column-gap:1.6rem;list-style:none;padding:0;margin:1rem 0 0;font-size:10.5pt;line-height:1.6}
+#printHost .pescort li{display:flex;justify-content:space-between;gap:.6rem;border-bottom:1px dotted #c9b893;break-inside:avoid}
+#printHost .pmeal{width:100%;border-collapse:collapse;margin-top:1rem;font-size:10.5pt}
+#printHost .pmeal th,#printHost .pmeal td{border:1px solid #c9b893;padding:.3rem .45rem;text-align:left}
+#printHost .pmeal .tot td{font-weight:700}
+/* end print-sheet */
+@media print{body{background:#fff!important}body>*:not(#printHost){display:none!important}#printHost{display:block!important}}
 
 footer{padding:3rem 1.4rem 4rem;text-align:center;color:var(--muted);border-top:1px solid var(--line-2)}
 footer svg{width:40px;height:48px;margin-bottom:.6rem}
@@ -468,6 +508,9 @@ footer b{font-family:var(--display);font-weight:600;letter-spacing:.2em;color:va
   .side .panel.opt{display:none}
   .brand b{font-size:.88rem;letter-spacing:.1em}
   .kpi{grid-column:1/-1}
+  .nextq{grid-template-columns:40px minmax(0,1fr);padding:.9rem 1rem}
+  .nextq .qi{width:40px;height:40px}
+  .nextq .gwrap{grid-column:1/-1;justify-self:start}
   .oath{grid-template-columns:1fr;text-align:center;justify-items:center}
   .rankbox{justify-content:center}
   .deck{height:470px}
@@ -533,11 +576,12 @@ footer b{font-family:var(--display);font-weight:600;letter-spacing:.2em;color:va
 <div id="modalHost"></div>
 <div id="overlayHost"></div>
 <div id="drawerHost"></div>
+<div id="printHost"></div>
 
 <script>
 "use strict";
 /* =================================================================== DATA */
-const RAW = {"nancy": ["Nabil Audy", "Yolanda Audy", "Susie Jriege", "George Jriege", "Myrna Diab", "Charbel Diab", "Nina Ibrahim", "Paul Ibrahim", "AJ Jriege", "Billy Audy", "Lena Audy", "Elias Audy", "Anthony Audy", "Navalia", "Vera Rubeiz", "Tony Rubeiz", "Michelle Rubeiz", "Larissa Rubiez", "Tony Dabboul", "Kristen Dabboul", "Salam Daboul", "Hamid Daaboul", "Nicole Dabboul", "Nicolas Dabboul", "Chris Khoury", "Nancy Audy", "Rima Audy", "Fredy Audy", "Nabil Audy"], "chris": ["Michel Istfan", "Samanatha Istfan", "Anthony Istfan", "Christopher Istfan", "Pierre Khoury", "Fadia Khoury", "Elie Khoury", "Denise Khoury", "Karine Nabbout", "Charlie Nabbout", "Mikey Nabbout", "Justin Nabbout", "Pierre Istfan", "Yolanda Istfan", "Khalifa", "Rita Khoury", "Danny Khoury", "George Khoury", "Mikey Khoury", "Zana Audi", "Michael Audi"], "khoury": ["Nahia Khoury", "Bert Najjar", "Toufic Najjar", "Nada Hanna", "Hassan Hanna", "John Khoury", "Souad Dabaghi", "Amal Dabaghi", "Ed Cortas?", "Gloria Cortas?", "Fadi Hanna", "George Hanna", "Kristen Hanna"], "audy": ["Elias Audy", "Lourdes Audy", "Omar Audy", "Emad Audy", "Zana Bozza", "Michael Bozza", "Jack Audy", "Leslie Audy", "Sara Audy", "Johnny Audy", "Nick Audy", "Minh Audy", "Lina Heraiki", "Emile Heraiki", "Labibi Audy", "Christina Kennedy", "Gerard Kennedy", "Simon Heraiki", "Julieta Heraiki", "Wassim Heraiki", "Jessica Heraiki", "Ragheda", "David", "Dolly Smith", "Micah Smith", "Rania", "Karen", "Ghassan"], "lakkis": ["Teta Houda", "Alissar Lakkis", "Tony Lakkis", "Guiwa Lakkis", "Elie Lakkis", "Lara Lakkis", "Adib Lakkis", "Maya Lakkis", "Nadim Lakkis", "Emily (Amouli) Wehbe", "Basem Wehbe", "Lakkis Kids", "Johnny Lakkis", "Aleen Lakkis", "Andrew Lakkis", "Rita Younes", "Tina Lakkis", "Chris Lakkis", "Sally Lakkis", "Sam Lakkis", "Gabby Lakkis", "George Lakkis", "----", "Sarah Lakkis", "Nanu Lakkis", "Rachel Lakkis", "Abe Lakkis", "Pam Lakkis", "Marc Lakkis", "Val Lakkis", "Junior Lakkis", "Dania Lakkis", "Eddie Lakkis", "Rana Haidar", "Nicky Haidar", "Lara Ammouri", "Edmond Ammouri", "Tony Wehbe"], "audi": ["Adolli Audi", "George Audi", "Jackie Al-Harbi", "Sam Al-Harbi", "Elaina Audi", "Salwa Audi", "Charlie Audi", "Juliana Audi", "George Audi", "Alissar Audi", "Ghassan Audi", "Dedae Audi", "Hadi Audi", "Ivana Audi", "Rami Audi", "Atziri Audi", "Elaine Mansour", "Karim Mansour", "Melvina Zoummar"], "daly": ["Mona Daly", "Alberto Daly", "Jack Daly", "Pam Daly", "Judy Daly", "Albert Daly", "Nayla Daly", "Tony Daly", "Eliane Daly", "Marie Tannous", "Marielena Nassif", "Freddie Tannous", "Yola Haidar", "Bassem Haidar", "George Nassif"], "daaboul": ["Nahia Daaboul", "Gloria Rachmani", "Elie Rachmani", "Randah Rachmani", "Kameel Rachmani", "Fufu Abi Elias", "Elias Abi Elias", "Antony Abi Elias", "John Abi Elias", "Devon Abi Elias", "Julie Abi Elias", "Suzie Margertini", "Andy Margentini", "George Farah", "Mike Farah", "Helle Farah", "Hamid Daaboul", "Gladis Dabboul", "Mikey Dabboul", "Micheal Daaboul", "Daniella Daaboul", "Hatem Sassine", "Rima Sassine", "Janet Sassine", "Joanne Sassine", "Elias Sassine", "Amir Sassine", "International:", "Sourazze Jollet", "Jon Clamo Jollet", "Marie Jollet", "Martin Jollet", "Gladis Sassine"], "jriege": ["Amal Elias", "Gali Massih", "Gerard Massih", "Zuzu Elias", "Denise Elias", "George Elias", "Nessa Elias", "Zoya Douwaihi", "Antoine Douyhi", "Rita Makhoul", "Charbel Makhoul", "Goerge Douyhi", "Stephanie Douyhi", "Johnny Douyhi", "Claudette Karam", "Majd Karam", "Eneda Karam", "Cal Karam", "Cynthia Karam", "Amou", "Johnny", "Layal", "Jawad", "Maggie Jriege"], "others": ["Lara Awde", "Elias Elias", "Christine Elias", "Serena Alameda", "Paulo Alameda", "Nick Jabbour", "Souha Alagha", "Salim Alagha", "Kevin Alagha", "Stephanie Alagha", "Chris Alagha", "Andrew Alagha", "Fiance", "Samia Elias?", "Nanu Elias?", "Frank Mercuri", "Josephine Mercuri", "Father Ghassan Haddad", "Amal Haddad", "Eddie Aboukheir", "Jenny Aboukheir", "Alisar Mitri", "Joseph Mitri", "Jamilee Bahnam", "Ghassan Bahnam", "Taylor Mercuri", "Lindsey", "Nick Mercuri", "Emilia", "Jimmy Thomas", "Kelly Thomas", "Marie Mansour", "Elias Mansour", "George Mansour", "Evan Mansour", "Elias Mansour", "Houda Mansour", "Rania Jriege", "Ziad Jriege", "Abdallah Mansour", "Johinah Mansour", "Serena Mansour", "Rami Manour", "Sally Mansour", "Salim Mansour", "Nicole Ghantous"], "cfriends": ["Matt Barbieri", "Maddie Barbieri", "Sillz Silbert", "Elizabeth", "KEVIN Li", "Kevin's GF", "Greg Hickox", "Emily", "Harry Haywood", "Sam Haywood", "Joey Zampell", "Joey's GF", "Charlie Paine", "Sean Barr"], "nfriends": ["Brooke Mercuri", "Yara Nassif", "Megan Duffy", "Colin Buckley", "Delia McDonough", "Kevin McDonough", "Ashley Mullen", "Alex Rota", "Rebecca Bahnam", "Justin", "Roy Bahnam", "Vanessa Bahnam", "Roger"], "kids": ["Jana Daaboul", "Charlie Daaboul", "Sofie Daaboul", "Jolie Audy", "Zara Nabbout"]};
+const RAW = {"nancy": ["Nabil Audy", "Yolanda Audy", "Susie Jriege", "George Jriege", "Myrna Diab", "Charbel Diab", "Nina Ibrahim", "Paul Ibrahim", "AJ Jriege", "Billy Audy", "Lena Audy", "Elias Audy", "Anthony Audy", "Navalia", "Vera Rubeiz", "Tony Rubeiz", "Michelle Rubeiz", "Larissa Rubiez", "Tony Dabboul", "Kristen Dabboul", "Salam Daboul", "Hamid Daaboul", "Nicole Dabboul", "Nicolas Dabboul", "Chris Khoury", "Nancy Audy", "Rima Audy", "Fredy Audy", "Nabil Audy"], "chris": ["Michel Istfan", "Samantha Istfan", "Anthony Istfan", "Christopher Istfan", "Pierre Khoury", "Fadia Khoury", "Elie Khoury", "Denise Khoury", "Karine Nabbout", "Charlie Nabbout", "Mikey Nabbout", "Justin Nabbout", "Pierre Istfan", "Yolanda Istfan", "Khalifa", "Rita Khoury", "Danny Khoury", "George Khoury", "Mikey Khoury", "Zana Audi", "Michael Audi"], "khoury": ["Nahia Khoury", "Bert Najjar", "Toufic Najjar", "Nada Hanna", "Hassan Hanna", "John Khoury", "Souad Dabaghi", "Amal Dabaghi", "Ed Cortas?", "Gloria Cortas?", "Fadi Hanna", "George Hanna", "Kristen Hanna"], "audy": ["Elias Audy", "Lourdes Audy", "Omar Audy", "Emad Audy", "Zana Bozza", "Michael Bozza", "Jack Audy", "Leslie Audy", "Sara Audy", "Johnny Audy", "Nick Audy", "Minh Audy", "Lina Heraiki", "Emile Heraiki", "Labibi Audy", "Christina Kennedy", "Gerard Kennedy", "Simon Heraiki", "Julieta Heraiki", "Wassim Heraiki", "Jessica Heraiki", "Ragheda", "David", "Dolly Smith", "Micah Smith", "Rania", "Karen", "Ghassan"], "lakkis": ["Teta Houda", "Alissar Lakkis", "Tony Lakkis", "Guiwa Lakkis", "Elie Lakkis", "Lara Lakkis", "Adib Lakkis", "Maya Lakkis", "Nadim Lakkis", "Emily (Amouli) Wehbe", "Basem Wehbe", "Lakkis Kids", "Johnny Lakkis", "Aleen Lakkis", "Andrew Lakkis", "Rita Younes", "Tina Lakkis", "Chris Lakkis", "Sally Lakkis", "Sam Lakkis", "Gabby Lakkis", "George Lakkis", "----", "Sarah Lakkis", "Nanu Lakkis", "Rachel Lakkis", "Abe Lakkis", "Pam Lakkis", "Marc Lakkis", "Val Lakkis", "Junior Lakkis", "Dania Lakkis", "Eddie Lakkis", "Rana Haidar", "Nicky Haidar", "Lara Ammouri", "Edmond Ammouri", "Tony Wehbe"], "audi": ["Adolli Audi", "George Audi", "Jackie Al-Harbi", "Sam Al-Harbi", "Elaina Audi", "Salwa Audi", "Charlie Audi", "Juliana Audi", "George Audi", "Alissar Audi", "Ghassan Audi", "Dedae Audi", "Hadi Audi", "Ivana Audi", "Rami Audi", "Atziri Audi", "Elaine Mansour", "Karim Mansour", "Melvina Zoummar"], "daly": ["Mona Daly", "Alberto Daly", "Jack Daly", "Pam Daly", "Judy Daly", "Albert Daly", "Nayla Daly", "Tony Daly", "Eliane Daly", "Marie Tannous", "Marielena Nassif", "Freddie Tannous", "Yola Haidar", "Bassem Haidar", "George Nassif"], "daaboul": ["Nahia Daaboul", "Gloria Rachmani", "Elie Rachmani", "Randah Rachmani", "Kameel Rachmani", "Fufu Abi Elias", "Elias Abi Elias", "Antony Abi Elias", "John Abi Elias", "Devon Abi Elias", "Julie Abi Elias", "Suzie Margertini", "Andy Margentini", "George Farah", "Mike Farah", "Helle Farah", "Hamid Daaboul", "Gladis Dabboul", "Mikey Dabboul", "Micheal Daaboul", "Daniella Daaboul", "Hatem Sassine", "Rima Sassine", "Janet Sassine", "Joanne Sassine", "Elias Sassine", "Amir Sassine", "International:", "Sourazze Jollet", "Jon Clamo Jollet", "Marie Jollet", "Martin Jollet", "Gladis Sassine"], "jriege": ["Amal Elias", "Gali Massih", "Gerard Massih", "Zuzu Elias", "Denise Elias", "George Elias", "Nessa Elias", "Zoya Douwaihi", "Antoine Douyhi", "Rita Makhoul", "Charbel Makhoul", "George Douyhi", "Stephanie Douyhi", "Johnny Douyhi", "Claudette Karam", "Majd Karam", "Eneda Karam", "Cal Karam", "Cynthia Karam", "Amou", "Johnny", "Layal", "Jawad", "Maggie Jriege"], "others": ["Lara Awde", "Elias Elias", "Christine Elias", "Serena Alameda", "Paulo Alameda", "Nick Jabbour", "Souha Alagha", "Salim Alagha", "Kevin Alagha", "Stephanie Alagha", "Chris Alagha", "Andrew Alagha", "Fiance", "Samia Elias?", "Nanu Elias?", "Frank Mercuri", "Josephine Mercuri", "Father Ghassan Haddad", "Amal Haddad", "Eddie Aboukheir", "Jenny Aboukheir", "Alisar Mitri", "Joseph Mitri", "Jamilee Bahnam", "Ghassan Bahnam", "Taylor Mercuri", "Lindsey", "Nick Mercuri", "Emilia", "Jimmy Thomas", "Kelly Thomas", "Marie Mansour", "Elias Mansour", "George Mansour", "Evan Mansour", "Elias Mansour", "Houda Mansour", "Rania Jriege", "Ziad Jriege", "Abdallah Mansour", "Johinah Mansour", "Serena Mansour", "Rami Mansour", "Sally Mansour", "Salim Mansour", "Nicole Ghantous"], "cfriends": ["Matt Barbieri", "Maddie Barbieri", "Sillz Silbert", "Elizabeth", "Kevin Li", "Kevin's GF", "Greg Hickox", "Emily", "Harry Haywood", "Sam Haywood", "Joey Zampell", "Joey's GF", "Charlie Paine", "Sean Barr"], "nfriends": ["Brooke Mercuri", "Yara Nassif", "Megan Duffy", "Colin Buckley", "Delia McDonough", "Kevin McDonough", "Ashley Mullen", "Alex Rota", "Rebecca Bahnam", "Justin", "Roy Bahnam", "Vanessa Bahnam", "Roger"], "kids": ["Jana Daaboul", "Charlie Daaboul", "Sofie Daaboul", "Jolie Audy", "Zara Nabbout"]};
 const HOUSES = [
   {key:"nancy",   name:"Nancy's Oathsworn",  land:"The Moonward Vale",  sigil:"crescent",    field:"#34386a", charge:"#ece4cf", blurb:"The names Nancy will not wed without. Strike one and you answer to the bride."},
   {key:"chris",   name:"Chris's Oathsworn",  land:"Towerholt",          sigil:"tower",       field:"#7c2128", charge:"#e7c47a", blurb:"The names Chris will not wed without. Strike one and you answer to the groom."},
@@ -571,6 +615,18 @@ HOUSES.forEach(h=>{let abroad=false;(RAW[h.key]||[]).forEach((raw,i)=>{
   if(h.key==="nancy"&&norm(b.name)==="nancy audy")b.couple="bride";
   BASE.push(b);
 })});
+// suggested households: neighbours on a list who share a surname (a "+1" joins the name above it)
+const surKey=n=>{const t=norm(n).split(" ");return t.length>1?t[t.length-1].replace(/(.)\1+/g,"$1"):""};
+HOUSES.forEach(h=>{const L=BASE.filter(b=>b.house===h.key);let run=[];
+  const tie=p=>{if(p.length>1)p.forEach(b=>b.hh0="h:"+p[0].id)};
+  const flush=()=>{if(run.length<=4)tie(run);else for(let i=0;i<run.length;i+=2)tie(run.slice(i,i+2));run=[]};
+  L.forEach(b=>{
+    if(b.couple||b.group){flush();return}
+    if(b.plusone){const last=run.pop();flush();if(last){run=[last,b];flush()}return}
+    const k=surKey(b.name);if(!k){flush();return}
+    if(run.length&&surKey(run[0].name)!==k)flush();run.push(b)});
+  flush()});
+BASE.forEach(b=>{if(b.couple)b.hh0="h:couple"});
 
 /* =================================================================== STORE */
 const LKEY="westerwood-v3", PKEY="westerwood-prefs";
@@ -601,7 +657,7 @@ const Store={
         changed();return;
       }
       this.synced=true;this.mode="shared";
-      const rec={};snap.docs.forEach(d=>{rec[d.id]=d.data()});this.rec=this.overlay(rec);changed();
+      const rec={};this.exists=new Set();snap.docs.forEach(d=>{rec[d.id]=d.data();this.exists.add(d.id)});this.rec=this.overlay(rec);changed();
     },err=>{this.fail(err)});
     db.doc("meta/settings").onSnapshot(s=>{if(s.exists){Object.assign(this.meta,s.data());changed()}},()=>{});
   },
@@ -610,49 +666,83 @@ const Store={
     for(const[id,r]of Object.entries(local))this.write("guests/"+id,r);
     this.write("meta/settings",{...this.meta});
   },
-  pend:new Map(), inflight:null, working:false,
-  write(path,data){this.pend.set(path,JSON.parse(JSON.stringify(data)));if(!this.working)this.work();return Promise.resolve()},
+  // one write at a time per document; "update" sends only the fields that changed, so two people
+  // editing different details of the same guest never overwrite each other
+  pend:new Map(), inflight:null, working:false, exists:new Set(),
+  write(path,data,kind="set"){const d=JSON.parse(JSON.stringify(data)),cur=this.pend.get(path);
+    if(cur&&kind==="update")Object.assign(cur.d,d);else this.pend.set(path,{kind,d});
+    if(!this.working)this.work();return Promise.resolve()},
   async work(){
     this.working=true;
     while(this.pend.size){
-      const[path,d]=this.pend.entries().next().value;this.pend.delete(path);this.inflight={path,d};
-      try{await this.db.doc(path).set(d)}
-      catch(e){if(e&&(e.code==="unavailable"||e.code==="resource_exhausted")){await sleep(800+Math.random()*800);try{await this.db.doc(path).set(d)}catch(e2){this.fail(e2)}}else this.fail(e)}
+      const[path,p]=this.pend.entries().next().value;this.pend.delete(path);this.inflight={path,...p};
+      const ref=this.db.doc(path),full=()=>path.startsWith("guests/")?this.rec[path.slice(7)]||p.d:p.d;
+      const run=()=>p.kind==="update"?ref.update(p.d):ref.set(p.d);
+      try{await run()}
+      catch(e){const c=e&&e.code;
+        if(p.kind==="update"&&c==="invalid_argument"){try{await ref.set(JSON.parse(JSON.stringify(full())))}catch(e2){this.fail(e2)}}
+        else if(c==="unavailable"||c==="resource_exhausted"){await sleep(800+Math.random()*800);try{await run()}catch(e2){this.fail(e2)}}
+        else this.fail(e)}
       this.inflight=null;
     }
     this.working=false;
   },
-  overlay(rec){const ap=(p,d)=>{if(p.startsWith("guests/"))rec[p.slice(7)]=d};if(this.inflight)ap(this.inflight.path,this.inflight.d);this.pend.forEach((d,p)=>ap(p,d));return rec},
+  overlay(rec){const ap=(path,p)=>{if(!path.startsWith("guests/"))return;const id=path.slice(7);rec[id]=p.kind==="update"?{...(rec[id]||{}),...p.d}:p.d};
+    if(this.inflight)ap(this.inflight.path,this.inflight);this.pend.forEach((p,path)=>ap(path,p));return rec},
   fail(e){
     const c=e&&e.code;
     if(c==="invalid_argument"||c==="not_granted"){if(!this.readOnly){this.readOnly=true;notice("View only","You can read this list but changes will not be saved.","warn");changed()}}
     else if(c==="quota_exceeded")notice("The ledger is full","Remove a few custom guests to make room.","warn");
     else if(c==="revoked"){this.readOnly=true;changed()}
   },
-  save(id){if(this.mode==="shared"){if(!this.readOnly)this.write("guests/"+id,this.rec[id]||{})}else this.saveLocal()},
+  save(id,keys){if(this.mode!=="shared"){this.saveLocal();return}if(this.readOnly)return;const r=this.rec[id]||{};
+    if(keys&&this.exists.has(id)){const d={};keys.forEach(k=>d[k]=r[k]===undefined?null:r[k]);this.write("guests/"+id,d,"update")}
+    else{this.write("guests/"+id,r);this.exists.add(id)}},
   saveMeta(){if(this.mode==="shared"){if(!this.readOnly)this.write("meta/settings",{...this.meta})}else this.saveLocal()}
 };
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
 /* =================================================================== MODEL */
-let GUESTS=[],BYID={},NAMEMAP={};
+let GUESTS=[],BYID={},NAMEMAP={},HH={},DUPS=[];
 function rebuild(){
   const R=Store.rec,list=[];
   BASE.forEach(b=>{const r=R[b.id]||{};if(r.removed)return;list.push(mk(b,r))});
   Object.entries(R).forEach(([id,r])=>{if(r&&r.custom&&!r.removed&&H[r.house])list.push(mk({id,name:r.name||"New guest",house:r.house,custom:true},r))});
-  GUESTS=list;BYID=Object.fromEntries(list.map(g=>[g.id,g]));NAMEMAP={};
-  list.forEach(g=>{const k=norm(g.name);(NAMEMAP[k]=NAMEMAP[k]||[]).push(g.id)});
-  list.forEach(g=>{const o=NAMEMAP[norm(g.name)];g.twice=(o.length>1&&!g.plusone&&!g.group)?o.filter(x=>x!==g.id):null;g.flagged=!!(g.twice||g.uncertain||g.plusone||g.group)});
+  GUESTS=list;BYID=Object.fromEntries(list.map(g=>[g.id,g]));NAMEMAP={};HH={};
+  list.forEach(g=>{const k=norm(g.name);(NAMEMAP[k]=NAMEMAP[k]||[]).push(g.id);if(g.hh)(HH[g.hh]=HH[g.hh]||[]).push(g)});
+  list.forEach(g=>{if(g.hh&&HH[g.hh].length<2)g.hh=null});
+  DUPS=findDups(list);list.forEach(g=>g.twice=null);
+  DUPS.forEach(([a,b])=>{(a.twice=a.twice||[]).push(b.id);(b.twice=b.twice||[]).push(a.id)});
+  list.forEach(g=>{g.partial=!g.couple&&!g.group&&!g.plusone&&norm(g.name).split(" ").length<2;g.flagged=!!(g.twice||g.uncertain||g.plusone||g.group||g.partial)});
 }
+function lev(a,b){if(Math.abs(a.length-b.length)>1)return 9;const m=a.length,n=b.length;let p=Array.from({length:n+1},(_,j)=>j);
+  for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]}
+const notSame=(a,b)=>(a.ns||[]).includes(b.id)||(b.ns||[]).includes(a.id);
+function findDups(list){const C=list.filter(g=>!g.group&&!g.plusone&&!g.couple).map(g=>{const n=norm(g.name),t=n.split(" ");return{g,n,f:t[0],s:surKey(g.name),two:t.length>1}}),out=[];
+  for(let i=0;i<C.length;i++)for(let j=i+1;j<C.length;j++){const a=C[i],b=C[j];if(!a.two||!b.two)continue;
+    const same=a.n===b.n||(a.f===b.f&&a.s===b.s)||(a.n.length>=8&&a.n[0]===b.n[0]&&lev(a.n,b.n)<=1);
+    if(same&&!notSame(a.g,b.g))out.push([a.g,b.g])}
+  return out}
 function mk(b,r){
   const g={...b,...r,id:b.id,house:r.house&&H[r.house]?r.house:b.house,name:r.name||b.name};
+  g.hh=r.hh!==undefined&&r.hh!==null?(r.hh||null):(b.hh0||null);
   g.epi=g.couple==="groom"?"the Groom, Lord of the Feast":g.couple==="bride"?"the Bride, Lady of the Feast":epiFor(b.name,b.house);
   if(g.couple){g.d="in";g.rsvp=g.rsvp||"yes"}
   g.d=g.d||null;g.rsvp=g.rsvp||null;g.party=Math.max(1,Math.min(12,+g.party||1));g.tags=Array.isArray(g.tags)?g.tags:[];g.hist=Array.isArray(g.hist)?g.hist:[];
   return g;
 }
-const sworn=g=>g.house==="nancy"?"Nancy":g.house==="chris"?"Chris":null;
+const sworn=g=>g.house==="nancy"?"Nancy":g.house==="chris"?"Chris":g.sworn||null;
 const judgeable=()=>GUESTS.filter(g=>!g.couple);
+/* households: one invitation, one envelope, one table */
+const household=g=>g.hh&&HH[g.hh]?HH[g.hh]:[g];
+function unitsOf(list){const m=new Map(),out=[];list.forEach(g=>{const k=g.hh||"s:"+g.id;let u=m.get(k);if(!u){u=[];m.set(k,u);out.push(u)}u.push(g)});return out}
+const andJoin=a=>a.length<2?a.join(""):a.slice(0,-1).join(", ")+" & "+a[a.length-1];
+function hhName(u){if(u.length===1)return u[0].name;const t=u.map(g=>g.name.split(" ")),last=t[0][t[0].length-1];
+  if(t.every(x=>x.length>1&&x[x.length-1]===last))return andJoin(t.map(x=>x.slice(0,-1).join(" ")))+" "+last;return andJoin(u.map(g=>g.name))}
+const firstNames=u=>andJoin(u.filter(g=>!g.plusone).map(g=>g.name.split(" ")[0]));
+const partyOf=u=>u.reduce((s,g)=>s+g.party,0);
+const idsOf=u=>u.map(g=>g.id).join(",");
+const unitById=s=>String(s||"").split(",").map(id=>BYID[id]).filter(Boolean);
 function stage(g){if(g.d==="out")return"out";if(g.d==="maybe")return"maybe";if(g.d!=="in")return"none";if(g.rsvp==="sent")return"sent";if(g.rsvp==="yes")return"yes";if(g.rsvp==="no")return"no";return"invite"}
 const coming=g=>g.d==="in"&&g.rsvp!=="no";
 function stats(key){const r={total:0,in:0,maybe:0,out:0,none:0,invite:0,sent:0,yes:0,no:0,head:0,yesHead:0};
@@ -724,6 +814,9 @@ const IC={
   eye:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>`,
   warn:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l9.5 17h-19z" fill="currentColor" fill-opacity=".15"/><path d="M12 10v4.5M12 17.2v.3"/></svg>`,
   star:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.6 6.4L21 9l-5 4.3L17.6 20 12 16.6 6.4 20 8 13.3 3 9l6.4-.6z" fill="currentColor" fill-opacity=".25"/></svg>`,
+  chat:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>`,
+  print:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3"/><rect x="7" y="14" width="10" height="7"/></svg>`,
+  broom:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M14 3l-3 8M6 12h10l2 9H4z"/><path d="M8 16v5M12 16v5M16 16v5"/></svg>`,
   plus:`<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M3 8h10"/></svg>`,
   down:`<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v9M4 7l4 4 4-4M3 14h10"/></svg>`,
   copy:`<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>`,
@@ -859,7 +952,9 @@ function parallax(){const layers=$$("#scene .layer"),hi=$("#heroIn");let mx=0,ti
   addEventListener("pointermove",e=>{if(e.pointerType!=="mouse")return;mx=e.clientX/innerWidth-.5;if(!tick){tick=true;requestAnimationFrame(upd)}})}
 
 /* =================================================================== UI PRIMITIVES */
-function notice(title,text,kind="good"){const n=document.createElement("div");n.className="notice "+(kind==="warn"?"warn":"");n.innerHTML=`${kind==="warn"?IC.warn:IC.star}<div><b></b><span></span></div>`;n.querySelector("b").textContent=title;n.querySelector("span").textContent=text;const h=$("#notices");h.prepend(n);while(h.children.length>3)h.lastChild.remove();setTimeout(()=>{n.classList.add("out");setTimeout(()=>n.remove(),400)},3800)}
+function notice(title,text,kind="good",action){const n=document.createElement("div");n.className="notice "+(kind==="warn"?"warn":"");n.innerHTML=`${kind==="warn"?IC.warn:IC.star}<div><b></b><span></span></div>`;n.querySelector("b").textContent=title;n.querySelector("span").textContent=text;
+  if(action){const b=document.createElement("button");b.className="btn nact";b.textContent=action.label;b.onclick=()=>{n.remove();action.fn()};n.appendChild(b)}
+  const h=$("#notices");h.prepend(n);while(h.children.length>3)h.lastChild.remove();setTimeout(()=>{n.classList.add("out");setTimeout(()=>n.remove(),400)},action?8000:3800)}
 function modal(html,onMount){return new Promise(res=>{const host=$("#modalHost");host.innerHTML=`<div class="modal" role="dialog" aria-modal="true"><div class="mbox">${html}</div></div>`;const m=host.firstChild,prev=document.activeElement;
   const done=v=>{host.innerHTML="";document.removeEventListener("keydown",k,true);if(prev&&prev.focus)prev.focus({preventScroll:true});res(v)};const k=e=>{if(e.key==="Escape"){e.stopPropagation();done(null)}};
   document.addEventListener("keydown",k,true);m.addEventListener("click",e=>{const b=e.target.closest("[data-r]");if(b)done(b.dataset.r==="cancel"?null:b.dataset.r);else if(e.target===m)done(null)});
@@ -874,10 +969,10 @@ function patch(id,p,text,{silent}={}){
   if(!canWrite())return false;
   const g=BYID[id];if(!g)return false;
   const prevHouse=stats(g.house),prevAll=stats();
-  const r=JSON.parse(JSON.stringify(Store.rec[id]||{}));Object.assign(r,p);
-  if(g.custom){r.custom=true;r.name=r.name||g.name;r.house=r.house||g.house}
-  if(text){r.hist=[{t:Date.now(),x:text,by:Store.uid||null},...(r.hist||[])].slice(0,15)}
-  r.u=Date.now();lastLocal=Date.now();Store.rec[id]=r;Store.save(id);rebuild();
+  const r=JSON.parse(JSON.stringify(Store.rec[id]||{}));Object.assign(r,p);const keys=[...Object.keys(p),"u"];
+  if(g.custom){r.custom=true;r.name=r.name||g.name;r.house=r.house||g.house;keys.push("custom","name","house")}
+  if(text){r.hist=[{t:Date.now(),x:text,by:Store.uid||null},...(r.hist||[])].slice(0,15);keys.push("hist")}
+  r.u=Date.now();lastLocal=Date.now();Store.rec[id]=r;Store.save(id,keys);rebuild();
   if(!silent)events(BYID[id]||g,prevHouse,prevAll);
   changed();return true;
 }
@@ -888,18 +983,55 @@ function events(g,ph,pa){
   if(a.head>Store.meta.cap&&pa.head<=Store.meta.cap){play("warn");notice("The hall overflows",`Expected headcount is ${a.head}, with ${Store.meta.cap} seats.`,"warn")}
   if(hs.yes&&hs.yes===hs.in&&ph.yes<ph.in&&hs.in>2)notice(`${h.name} rides to the feast`,`Every summoned guest of ${h.name} has said yes.`);
 }
-function setDecision(id,d){const g=BYID[id];if(!g)return false;
+function setDecision(id,d,opt){const g=BYID[id];if(!g)return false;
   if(g.couple){notice("Not possible",`The ${g.couple} cannot be struck from their own wedding.`,"warn");return false}
   const txt=d==="in"?"Summoned to the feast":d==="maybe"?"Marked as maybe":d==="out"?"Struck from the roll":"Decision cleared";
   const p={d};if(d!=="in"){p.rsvp=null;p.table=null}
-  return patch(id,p,txt);
+  return patch(id,p,txt,opt);
 }
-function setRsvp(id,rsvp){const g=BYID[id];if(!g)return false;
+function setRsvp(id,rsvp,opt){const g=BYID[id];if(!g)return false;
   if(g.couple&&rsvp!=="yes"){notice("Not possible",`The ${g.couple} is certainly attending.`,"warn");return false}
   const txt=rsvp==="sent"?"Raven sent":rsvp==="yes"?"Will attend":rsvp==="no"?"Declined":"Invitation reset";
   const p={rsvp,d:"in"};if(rsvp==="no")p.table=null;
-  const ok=patch(id,p,txt);if(ok)play(rsvp==="yes"?"yes":rsvp==="no"?"strike":rsvp==="sent"?"raven":"flip");return ok}
+  return patch(id,p,txt,opt)}
+// apply to several people at once; only the last one fires the realm's events
+function each(ids,fn){const L=ids.filter(id=>BYID[id]);let ok=false;L.forEach((id,i)=>{if(fn(id,{silent:i<L.length-1}))ok=true});return ok}
+function decideMany(ids,d){return each(ids.filter(id=>!BYID[id].couple),(id,o)=>setDecision(id,d,o))}
+function rsvpMany(ids,v){const ok=each(ids.filter(id=>!(BYID[id].couple&&v!=="yes")),(id,o)=>setRsvp(id,v,o));if(ok)play(v==="yes"?"yes":v==="no"?"strike":v==="sent"?"raven":"flip");return ok}
+// the people an invitation covers: the household members already summoned (or everyone not struck)
+function inviteIds(g){const hh=household(g),inn=hh.filter(x=>x.d==="in"&&x.id!==g.id);return[g.id,...(inn.length?inn:hh.filter(x=>x.d!=="out"&&x.id!==g.id)).map(x=>x.id)]}
 async function strikeGuard(g){if(!sworn(g))return true;play("warn");return confirmBox(`${sworn(g)} swore to this name`,`${g.name} is on ${sworn(g)}'s must-have list. Strike them anyway?`,"Strike anyway",true)}
+async function strikeGuardMany(u){const sw=u.filter(sworn);if(!sw.length)return true;if(u.length===1)return strikeGuard(u[0]);play("warn");
+  return confirmBox("A sworn name is in this household",`${andJoin(sw.map(g=>g.name))} ${sw.length>1?"are":"is"} on a must-have list. Strike anyway?`,"Strike anyway",true)}
+
+/* undo for anything that touches many records at once */
+function snapshot(ids){return ids.map(id=>[id,Store.rec[id]?JSON.parse(JSON.stringify(Store.rec[id])):null])}
+function restore(snap){if(!canWrite())return;snap.forEach(([id,r])=>{Store.rec[id]=r||{};Store.save(id)});lastLocal=Date.now();changed();play("flip");notice("Undone","Everything is back as it was.")}
+function undoable(title,text,snap,kind){notice(title,text,kind,{label:"Undo",fn:()=>restore(snap)})}
+async function many(ids,title,text,fn){if(!canWrite())return false;const snap=snapshot(ids);const ok=await fn();if(ok!==false)undoable(title,text,snap);return ok}
+
+/* households: join, leave, split */
+function joinHousehold(id,intoId){const into=BYID[intoId],g=BYID[id];if(!into||!g||!canWrite())return;const key=into.hh||"h:"+intoId;
+  const snap=snapshot([id,intoId]);if(!into.hh)patch(intoId,{hh:key},null,{silent:true});patch(id,{hh:key},`Joined ${hhName(household(into))}'s household`,{silent:true});
+  undoable("Household joined",`${g.name} now shares an invitation with ${firstNames(household(BYID[intoId]).filter(x=>x.id!==id))}.`,snap)}
+function splitHousehold(ids){if(!canWrite())return;const snap=snapshot(ids);ids.forEach(id=>patch(id,{hh:""},"Listed on their own",{silent:true}));
+  undoable("Household split",`${pl(ids.length,"person is","people are")} now listed on their own.`,snap)}
+
+/* duplicates: merge two entries into one person */
+const MERGE_F=["email","phone","addr","meal","diet","plus","notes","table","rsvp","d"];
+function mergeGuests(keepId,dropId){const k=BYID[keepId],d=BYID[dropId];if(!k||!d||!canWrite())return;
+  const snap=snapshot([keepId,dropId]),p={},rank={in:3,maybe:2,out:1};
+  MERGE_F.forEach(f=>{if(!k[f]&&d[f])p[f]=d[f]});
+  if((rank[d.d]||0)>(rank[k.d]||0)){p.d=d.d;if(d.rsvp)p.rsvp=d.rsvp}
+  if(k.notes&&d.notes&&k.notes!==d.notes)p.notes=k.notes+"\n"+d.notes;
+  const tags=[...new Set([...k.tags,...d.tags])];if(tags.length!==k.tags.length)p.tags=tags;
+  if(sworn(d)&&!sworn(k))p.sworn=sworn(d);
+  if(d.party>k.party)p.party=d.party;
+  patch(keepId,p,`Merged with the entry in ${H[d.house].name}`,{silent:true});
+  patch(dropId,{removed:true,mergedInto:keepId},`Merged into the entry in ${H[k.house].name}`,{silent:true});
+  undoable("One person, one entry",`${k.name} is now listed once, in ${H[k.house].name}.`,snap)}
+function markDifferent(aId,bId){const a=BYID[aId],b=BYID[bId];if(!a||!b)return;
+  patch(aId,{ns:[...(a.ns||[]),bId]},null,{silent:true});patch(bId,{ns:[...(b.ns||[]),aId]},null,{silent:true})}
 
 /* =================================================================== RENDER LOOP */
 let view="war",raf=0;
@@ -925,22 +1057,24 @@ function renderView(update){const fn=VIEWS[view];if(!fn)return;fn(!!update)}
 function quests(){
   const a=stats(),J=judgeable().length,Q=[];
   const unseated=GUESTS.filter(g=>coming(g)&&!g.table),noAddr=GUESTS.filter(g=>g.d==="in"&&!g.addr&&!g.couple);
-  const flagged=GUESTS.filter(g=>g.flagged&&g.d!=="out");
-  Q.push({i:IC.sword,t:"Judge the undecided",n:a.none,tot:J,p:(J-a.none)/J,d:a.none?`${pl(a.none,"name waits","names wait")} for a decision.`:"Every name has been judged.",b:"Hold council",go:()=>{councilMode="none";go("council")}});
+  const tc=tidyItems(),dups=tc.filter(t=>t.k==="dup").length,und=unitsOf(judgeable().filter(g=>!g.d)).length;
+  Q.push({i:IC.broom,t:"Tidy the roll",n:tc.length,tot:tc.length,p:0,d:tc.length?[dups&&pl(dups,"possible duplicate","possible duplicates"),tc.length-dups&&pl(tc.length-dups,"name needs","names need")+" finishing"].filter(Boolean).join(", ")+". Takes a minute.":"Every name is whole and listed once.",b:"Tidy now",go:tidy});
+  Q.push({i:IC.sword,t:"Judge the undecided",n:und,tot:J,p:(J-a.none)/J,d:a.none?`${pl(und,"household waits","households wait")} for a decision (${pl(a.none,"name","names")}).`:"Every name has been judged.",b:"Hold council",go:()=>{councilMode="none";go("council")}});
   if(a.head>Store.meta.cap)Q.push({warn:1,i:IC.warn,t:"Trim the feast to fit the hall",n:a.head-Store.meta.cap,tot:a.head,p:Store.meta.cap/a.head,d:`Expected headcount is ${a.head - Store.meta.cap} over the ${Store.meta.cap} seats.`,b:"Revisit",go:()=>{gF={...gF,stage:"invite"};go("guests")}});
   Q.push({i:IC.maybe,t:"Settle the maybes",n:a.maybe,tot:Math.max(a.maybe,1),p:a.maybe?0:1,d:a.maybe?`${pl(a.maybe,"guest is","guests are")} marked maybe.`:"No maybes left.",b:"Settle",go:()=>{councilMode="maybe";go("council")}});
-  Q.push({i:IC.raven,t:"Send the ravens",n:a.invite,tot:a.in,p:a.in?(a.in-a.invite)/a.in:0,d:a.invite?`${pl(a.invite,"summoned guest has","summoned guests have")} no invitation yet.`:a.in?"Every summoned guest has an invitation.":"Summon guests first.",b:"Open ravens",go:()=>go("ravens")});
-  Q.push({i:IC.scroll,t:"Chase the silent",n:a.sent,tot:a.sent+a.yes+a.no,p:(a.yes+a.no)/Math.max(1,a.sent+a.yes+a.no),d:a.sent?`${pl(a.sent,"raven awaits","ravens await")} a reply.`:"No replies outstanding.",b:"Follow up",go:()=>{gF={...gF,stage:"sent"};go("guests")}});
+  const inv=unitsOf(GUESTS.filter(g=>stage(g)==="invite")).length;
+  Q.push({i:IC.raven,t:"Send the ravens",n:inv,tot:a.in,p:a.in?(a.in-a.invite)/a.in:0,d:inv?`${pl(inv,"invitation is","invitations are")} still to send.`:a.in?"Every summoned guest has an invitation.":"Summon guests first.",b:"Open ravens",go:()=>go("ravens")});
+  const sil=unitsOf(GUESTS.filter(g=>stage(g)==="sent")).length;
+  Q.push({i:IC.scroll,t:"Chase the silent",n:sil,tot:a.sent+a.yes+a.no,p:(a.yes+a.no)/Math.max(1,a.sent+a.yes+a.no),d:sil?`${pl(sil,"invitation awaits","invitations await")} a reply. The message button on each card writes the reminder.`:"No replies outstanding.",b:"Follow up",go:()=>go("ravens")});
   Q.push({i:IC.home,t:"Gather addresses",n:noAddr.length,tot:a.in,p:a.in?(a.in-noAddr.length)/a.in:0,d:noAddr.length?`${pl(noAddr.length,"summoned guest has","summoned guests have")} no address on file.`:"Every summoned guest has an address.",b:"Fill in",go:()=>{gF={...gF,stage:"all",missing:"addr"};go("guests")}});
-  Q.push({i:IC.table,t:"Seat the great hall",n:unseated.length,tot:GUESTS.filter(coming).length,p:1-unseated.length/Math.max(1,GUESTS.filter(coming).length),d:unseated.length?`${pl(unseated.length,"guest needs","guests need")} a table.`:"Everyone coming has a seat.",b:"Seat",go:()=>go("hall")});
-  Q.push({i:IC.eye,t:"Unmask the strangers",n:flagged.length,tot:GUESTS.filter(g=>g.flagged).length,p:0,d:flagged.length?`${pl(flagged.length,"entry needs","entries need")} a closer look: listed twice, unsure, or unnamed.`:"Nothing left to review.",b:"Review",go:()=>{gF={...gF,stage:"all",missing:"",flag:true};go("guests")}});
+  Q.push({i:IC.table,t:"Seat the great hall",n:unitsOf(unseated).length,tot:GUESTS.filter(coming).length,p:1-unseated.length/Math.max(1,GUESTS.filter(coming).length),d:unseated.length?`${pl(unitsOf(unseated).length,"household needs","households need")} a table.`:"Everyone coming has a seat.",b:"Seat",go:()=>go("hall")});
   return Q;
 }
 function renderWar(){
   const a=stats(),cap=Store.meta.cap,X=xp(),r=rankOf(X);
   let days=null,dateTxt="";if(Store.meta.date){const d=new Date(Store.meta.date+"T12:00:00");if(!isNaN(d)){days=Math.ceil((d-new Date())/86400000);dateTxt=d.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"})}}
   const head=days==null?`<div class="big gold-text">The feast awaits</div><p>Set the wedding date to start the countdown. <button class="link" id="setDate">Set the date</button></p>`:days>0?`<div class="big gold-text">${pl(days,"day","days")}</div><p>until Chris and Nancy wed at Hearthkeep, ${esc(dateTxt)}</p>`:days===0?`<div class="big gold-text">Today is the day</div><p>${esc(dateTxt)}</p>`:`<div class="big gold-text">Wed and feasted</div><p>${esc(dateTxt)}</p>`;
-  const replied=a.yes+a.no,Q=quests();
+  const replied=a.yes+a.no,Q=quests(),nx=Q.find(q=>q.n>0);
   const steps=[["On the roll",a.total,"#9ea8bd"],["Summoned",a.in,"#f0c665"],["Ravens sent",a.sent+a.yes+a.no,"#9bb7ff"],["Replied",replied,"#c7a6ff"],["Attending",a.yes,"#7fcf9f"]];
   const standing=HOUSES.map(h=>({h,s:stats(h.key)})).sort((x,y)=>y.s.in-x.s.in);
   const feed=[];GUESTS.forEach(g=>g.hist.slice(0,4).forEach(e=>feed.push({g,e})));feed.sort((x,y)=>y.e.t-x.e.t);const F=feed.slice(0,10);
@@ -951,6 +1085,7 @@ function renderWar(){
       <div class="countdown">${head}</div>
       <div class="rankbox"><svg viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="25" fill="#8e1f24"/><circle cx="27" cy="27" r="19" fill="none" stroke="#e7c9a6" stroke-opacity=".6" stroke-dasharray="2 2.5"/><text x="27" y="34" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="19" fill="#f3dfc4">${["I","II","III","IV","V","VI","VII"][r.i]}</text></svg><div><b class="gold-text">${esc(r.name)}</b><small>${fmt(X)} XP${r.next?`, ${fmt(r.to-X)} to ${esc(r.next)}`:""}</small><div class="gauge blue"><i style="width:${r.next?((X-r.from)/(r.to-r.from)*100):100}%"></i></div></div></div>
     </div>
+    ${nx?`<div class="panel nextq ${nx.warn?"warn":""}"><div class="qi">${nx.i}</div><div><small>YOUR NEXT QUEST</small><b>${esc(nx.t)}</b><span>${esc(nx.d)}</span></div><span class="gwrap"><button class="gbtn sm" id="nextGo">${esc(nx.b)}</button></span></div>`:`<div class="panel nextq done"><div class="qi">${IC.in}</div><div><small>ALL QUESTS COMPLETE</small><b>The feast is ready</b><span>Every guest is judged, invited, answered and seated.</span></div></div>`}
     <div class="panel kpi"><div class="lbl"><span>Expected headcount</span><span>${a.head>cap?`${a.head-cap} over`:`${cap-a.head} open`}</span></div><div class="val">${a.head} <small>of ${cap} seats</small></div><div class="gauge seg ${a.head>cap?"over":""}"><i style="width:${Math.min(100,a.head/cap*100)}%"></i></div></div>
     <div class="panel kpi"><div class="lbl"><span>Confirmed attending</span></div><div class="val">${a.yesHead} <small>people</small></div><div class="note">${pl(a.yes,"invitation","invitations")} accepted, ${a.no} declined</div></div>
     <div class="panel kpi"><div class="lbl"><span>Awaiting reply</span></div><div class="val">${a.sent} <small>ravens</small></div><div class="note">${a.invite} summoned guests still to invite</div></div>
@@ -966,7 +1101,7 @@ function renderWar(){
     <div class="panel feed"><div class="ph"><h3>Ravens from the field</h3><small>Recent activity</small></div>
       ${F.length?F.map(({g,e})=>`<div class="act-item">${mini(g.house)}<div><button data-open="${g.id}">${esc(g.name)}</button> ${esc(e.x.toLowerCase())}<small>${ago(e.t)}${byName(e.by)?` by ${esc(byName(e.by))}`:""}</small></div></div>`).join(""):`<p class="empty-s">No activity yet. Hold council to send the first raven.</p>`}</div>
   </div></section>`;
-  $$("[data-q]").forEach(b=>b.onclick=()=>Q[+b.dataset.q].go());
+  $$("[data-q]").forEach(b=>b.onclick=()=>Q[+b.dataset.q].go());const ng=$("#nextGo");if(ng)ng.onclick=()=>nx.go();
   $$("tr[data-house]").forEach(t=>{t.onclick=()=>openRoster(t.dataset.house);t.onkeydown=e=>{if(e.key==="Enter")openRoster(t.dataset.house)}});
   const sd=$("#setDate");if(sd)sd.onclick=openSettings;
   $("#addG").onclick=addGuest;
@@ -974,16 +1109,17 @@ function renderWar(){
 
 /* =================================================================== COUNCIL */
 let busy=false,councilMode="none",councilHouse="all";
-function deckList(){return judgeable().filter(g=>(councilHouse==="all"||g.house===councilHouse)&&(councilMode==="maybe"?g.d==="maybe":!g.d))}
+function deckList(){return unitsOf(judgeable().filter(g=>(councilHouse==="all"||g.house===councilHouse)&&(councilMode==="maybe"?g.d==="maybe":!g.d)))}
 function renderCouncil(update){
-  if(update&&$("#deck")){sideCouncil();const top=$("#deck .gcard.top");if(busy)return;const L=deckList();if(top&&L[0]&&L[0].id===top.dataset.id)return;renderDeck(true);return}
-  $("#views").innerHTML=`<section class="view" aria-labelledby="vT"><div class="vh"><div><h2 id="vT" class="gold-text">The Council</h2><p>One name at a time. Summon, maybe, or strike. Drag the card or use your arrow keys.</p></div></div>
+  if(update&&$("#deck")){sideCouncil();const top=$("#deck .gcard.top");if(busy)return;const L=deckList();if(top&&L[0]&&idsOf(L[0])===top.dataset.ids)return;renderDeck(true);return}
+  $("#views").innerHTML=`<section class="view" aria-labelledby="vT"><div class="vh"><div><h2 id="vT" class="gold-text">The Council</h2><p>One household at a time. Summon, maybe, or strike. Drag the card or use your arrow keys.</p></div></div>
   <div class="board"><div class="arena"><div class="deck" id="deck"></div>
     <div class="acts"><button class="act out" data-act="out">Strike<kbd>←</kbd></button><button class="act maybe" data-act="maybe">Maybe<kbd>↓</kbd></button><button class="act in" data-act="in">Summon<kbd>→</kbd></button></div>
-    <div class="subacts"><button class="link" id="undo" ${undoStack.length?"":"disabled"}>Undo last</button><span id="deckLeft"></span></div></div>
+    <div class="subacts"><button class="link" id="undo" ${undoStack.length?"":"disabled"}>Undo last</button><button class="link" id="split" hidden>Not one household? Split them</button><span id="deckLeft"></span></div></div>
     <aside class="side" id="cside"></aside></div></section>`;
   sideCouncil(true);renderDeck();
   $("#undo").onclick=undo;
+  $("#split").onclick=()=>{const t=$("#deck .gcard.top");if(t)splitHousehold(t.dataset.ids.split(","))};
 }
 function sideCouncil(full){
   const a=stats(),cap=Store.meta.cap,X=xp(),r=rankOf(X),el=$("#cside");if(!el)return;
@@ -994,16 +1130,18 @@ function sideCouncil(full){
   $("#dHouse").onchange=e=>{councilHouse=e.target.value;renderDeck()};
   $("#dMaybe").onclick=()=>{councilMode=councilMode==="maybe"?"none":"maybe";sideCouncil();renderDeck()};
 }
-function cardHTML(g){const h=H[g.house],sw=sworn(g),fl=[];
-  if(sw)fl.push(`Sworn by ${sw}. Striking this name breaks an oath.`);
-  if(g.twice){const o=g.twice.map(id=>BYID[id]&&BYID[id].house).filter(k=>k&&k!==g.house);fl.push(o.length?`Also listed under ${[...new Set(o)].map(k=>H[k].name).join(" and ")}. Same person?`:"Written twice in this house. Same person?")}
-  if(g.uncertain)fl.push("The list marks this name with a question.");
-  if(g.plusone)fl.push("A guest whose name is not yet known.");
+function cardHTML(u){const g=u[0],h=H[g.house],fl=[],multi=u.length>1;
+  const sw=u.filter(sworn);if(sw.length)fl.push(`Sworn by ${[...new Set(sw.map(sworn))].join(" and ")}. Striking ${multi?"this household":"this name"} breaks an oath.`);
+  u.forEach(x=>{if(x.twice){const o=x.twice.map(id=>BYID[id]&&BYID[id].house).filter(k=>k&&k!==x.house);fl.push(`${multi?x.name+" is a":"A"}lso listed ${o.length?"under "+[...new Set(o)].map(k=>H[k].name).join(" and "):"twice in this house"}. Tidy the roll to merge.`)}});
+  if(u.some(x=>x.uncertain))fl.push("The list marks a name here with a question.");
+  if(u.some(x=>x.plusone))fl.push(multi?"Includes a guest whose name is not yet known.":"A guest whose name is not yet known.");
+  if(u.some(x=>x.partial))fl.push("Only a first name was written down.");
   if(g.group)fl.push("One line that stands for several children.");
   if(g.abroad)fl.push("Travels from across the Salt Sea.");
-  return`<div class="gcard top enter" data-id="${g.id}" style="--glow:${mix(h.field,"#ffd890",.35)}"><div class="face" style="--field:${h.field};--hl:${mix(h.field,"#fff2cf",.45)};--deep:${mix(h.field,"#000000",.55)}">
-    <div class="art">${shieldSVG(h.key,"big")}</div><div class="plaque"><h3>${esc(g.name)}</h3></div>
-    <div class="ctext"><p class="chouse">${esc(h.name)}</p><p class="cepi">${esc(g.epi)}</p><svg class="cdiv" viewBox="0 0 110 12" aria-hidden="true"><path d="M2 6H42M68 6h40" stroke="currentColor"/><path d="M55 1l5 5-5 5-5-5z" fill="currentColor"/></svg><div class="cflags">${fl.map(f=>`<span>${esc(f)}</span>`).join("")}</div></div>
+  const people=partyOf(u),sub=multi?`A household of ${["","one","two","three","four","five","six"][u.length]||u.length}${people>u.length?`, ${people} people in all`:""}`:g.epi;
+  return`<div class="gcard top enter" data-ids="${idsOf(u)}" style="--glow:${mix(h.field,"#ffd890",.35)}"><div class="face" style="--field:${h.field};--hl:${mix(h.field,"#fff2cf",.45)};--deep:${mix(h.field,"#000000",.55)}">
+    <div class="art">${shieldSVG(h.key,"big")}</div><div class="plaque"><h3 class="${hhName(u).length>24?"long":""}">${esc(hhName(u))}</h3></div>
+    <div class="ctext"><p class="chouse">${esc(h.name)}</p><p class="cepi">${esc(sub)}</p><svg class="cdiv" viewBox="0 0 110 12" aria-hidden="true"><path d="M2 6H42M68 6h40" stroke="currentColor"/><path d="M55 1l5 5-5 5-5-5z" fill="currentColor"/></svg><div class="cflags">${fl.slice(0,3).map(f=>`<span>${esc(f)}</span>`).join("")}</div></div>
     <div class="stamp s-in">Summoned</div><div class="stamp s-out">Struck</div><div class="stamp s-maybe">Maybe</div></div></div>`}
 const BACK=()=>`<div class="face"><svg viewBox="0 0 100 120" aria-hidden="true">${crestInner()}</svg></div>`;
 function renderDeck(quiet){
@@ -1013,23 +1151,27 @@ function renderDeck(quiet){
       <div style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center">${councilMode!=="maybe"&&anyMaybe?`<button class="pill" id="eM">Settle maybes</button>`:""}${councilMode==="maybe"?`<button class="pill" id="eU">Back to undecided</button>`:""}${councilHouse!=="all"?`<button class="pill" id="eA">All houses</button>`:""}<button class="pill" id="eR">Send the ravens</button></div></div>`;
     const b=(id,fn)=>{const e=$(id);if(e)e.onclick=fn};
     b("#eM",()=>{councilMode="maybe";sideCouncil();renderDeck()});b("#eU",()=>{councilMode="none";sideCouncil();renderDeck()});b("#eA",()=>{councilHouse="all";sideCouncil();renderDeck()});b("#eR",()=>go("ravens"));
-    acts.forEach(a=>a.disabled=true);$("#deckLeft").textContent="";return}
+    acts.forEach(a=>a.disabled=true);$("#deckLeft").textContent="";const sp=$("#split");if(sp)sp.hidden=true;return}
   acts.forEach(a=>a.disabled=Store.readOnly);
   d.innerHTML=(L[2]?`<div class="gcard back b2" aria-hidden="true">${BACK()}</div>`:"")+(L[1]?`<div class="gcard back b1" aria-hidden="true">${BACK()}</div>`:"")+cardHTML(L[0]);
-  $("#deckLeft").textContent=councilMode==="maybe"?`${pl(L.length,"maybe","maybes")} to settle`:`${L.length} left in this deck`;
+  const nm=L.reduce((s,u)=>s+u.length,0);$("#deckLeft").textContent=councilMode==="maybe"?`${pl(L.length,"household","households")} of maybes to settle`:`${pl(L.length,"household","households")} left (${pl(nm,"name","names")})`;
+  const sp=$("#split");if(sp)sp.hidden=L[0].length<2;
   if(!quiet)play("flip");bindDrag(d.querySelector(".gcard.top"));
 }
 const undoStack=[];
-function undo(){const u=undoStack.pop();if(!u)return;const r=JSON.parse(JSON.stringify(Store.rec[u.id]||{}));r.d=u.prev.d;r.rsvp=u.prev.rsvp;r.table=u.prev.table;r.hist=(r.hist||[]).slice(1);Store.rec[u.id]=r;Store.save(u.id);play("flip");changed();setTimeout(()=>{renderDeck(true);const b=$("#undo");if(b)b.disabled=!undoStack.length},20)}
+function undo(){const u=undoStack.pop();if(!u)return;
+  Object.entries(u.prev).forEach(([id,pv])=>{const r=JSON.parse(JSON.stringify(Store.rec[id]||{}));r.d=pv.d;r.rsvp=pv.rsvp;r.table=pv.table;r.hist=(r.hist||[]).slice(1);Store.rec[id]=r;Store.save(id,["d","rsvp","table","hist"])});
+  play("flip");changed();setTimeout(()=>{renderDeck(true);const b=$("#undo");if(b)b.disabled=!undoStack.length},20)}
 function sparks(val){if(reduced)return;const d=$("#deck"),col=val==="in"?["#ffe6a0","#f0c665","#fff"]:val==="out"?["#ff6b7a","#c22a37","#ffb0b8"]:["#bcd6f2","#8fb3d9"];
   for(let i=0;i<26;i++){const s=document.createElement("span");s.className="spark";const c=col[i%col.length];s.style.background=c;s.style.boxShadow=`0 0 10px ${c}`;d.appendChild(s);const a=Math.random()*Math.PI*2,dist=90+Math.random()*170;
     s.animate([{transform:"translate(-50%,-50%) scale(1)",opacity:1},{transform:`translate(calc(-50% + ${Math.cos(a)*dist}px),calc(-50% + ${Math.sin(a)*dist}px)) scale(.2)`,opacity:0}],{duration:700+Math.random()*400,easing:"cubic-bezier(.1,.7,.3,1)"}).onfinish=()=>s.remove()}}
 async function decide(val){
-  if(busy)return;const c=$("#deck .gcard.top");if(!c)return;const g=BYID[c.dataset.id];if(!g)return;busy=true;
-  if(val==="out"&&!(await strikeGuard(g))){c.classList.add("snap");c.style.transform="";busy=false;return}
-  const prev={d:g.d,rsvp:g.rsvp,table:g.table||null};
-  if(!setDecision(g.id,val)){c.classList.add("snap");c.style.transform="";busy=false;return}
-  undoStack.push({id:g.id,prev});const ub=$("#undo");if(ub)ub.disabled=false;
+  if(busy)return;const c=$("#deck .gcard.top");if(!c)return;const u=unitById(c.dataset.ids);if(!u.length)return;busy=true;
+  const back=()=>{c.classList.add("snap");c.style.transform="";busy=false};
+  if(val==="out"&&!(await strikeGuardMany(u))){back();return}
+  const prev={};u.forEach(g=>prev[g.id]={d:g.d,rsvp:g.rsvp,table:g.table||null});
+  if(!decideMany(u.map(g=>g.id),val)){back();return}
+  undoStack.push({prev});const ub=$("#undo");if(ub)ub.disabled=false;
   play(val==="in"?"summon":val==="out"?"strike":"maybe");
   if(reduced){busy=false;renderDeck(true);return}
   c.classList.remove("enter");c.querySelector(".stamp.s-"+val).classList.add("hit");sparks(val);
@@ -1047,13 +1189,14 @@ function renderRavens(update){
   const keepScroll=update?$$(".cards").map(c=>c.scrollTop):null;
   const q=norm(rvF.q),list=GUESTS.filter(g=>g.d==="in"&&(rvF.house==="all"||g.house===rvF.house)&&(!q||norm(g.name).includes(q)));
   const by={invite:[],sent:[],yes:[],no:[]};list.forEach(g=>by[stage(g)].push(g));
-  const card=g=>{const h=H[g.house],s=stage(g);const qa=s==="invite"?[["sent",IC.raven,"Mark raven sent"]]:s==="sent"?[["yes",IC.in,"Mark attending"],["no",IC.out,"Mark declined"]]:[["sent",IC.back,"Back to awaiting reply"]];
-    return`<div class="kcard" draggable="${!Store.readOnly}" data-id="${g.id}" style="--hc:${mix(h.field,"#ffffff",.25)}">${mini(g.house,"sh")}<div style="min-width:0"><button class="nm" data-open="${g.id}">${esc(g.name)}</button><small>${esc(h.name)}${g.party>1?`, party of ${g.party}`:""}${g.meal?`, ${esc(g.meal.toLowerCase())}`:""}</small></div><div class="kq">${g.couple&&s==="yes"?"":qa.map(([v,i,l])=>`<button data-rs="${v}" aria-label="${l}" title="${l}">${i}</button>`).join("")}</div></div>`};
-  const body=COLS.map(([k,l])=>{const arr=by[k],lim=colLimit[k]||60,head=arr.reduce((s,g)=>s+g.party,0);
-    return`<div class="col" data-col="${k}"><div class="colh"><div class="t"><h3 style="--c:${STAGE[k].c}"><i></i>${l}</h3><span class="ct">${arr.length}</span></div><small>${pl(head,"person","people")}</small>${k==="invite"&&arr.length?`<button class="btn" id="sendAll" style="margin-top:.3rem">${IC.raven}Send all ${arr.length} ravens</button>`:""}</div>
+  const card=u=>{const g=u[0],h=H[g.house],s=stage(g),ppl=partyOf(u);const qa=s==="invite"?[["sent",IC.raven,"Mark raven sent"]]:s==="sent"?[["yes",IC.in,"Mark attending"],["no",IC.out,"Mark declined"]]:[["sent",IC.back,"Back to awaiting reply"]];
+    const meals=u.map(x=>x.meal).filter(Boolean),couple=u.some(x=>x.couple);
+    return`<div class="kcard" draggable="${!Store.readOnly}" data-ids="${idsOf(u)}" style="--hc:${mix(h.field,"#ffffff",.25)}">${mini(g.house,"sh")}<div style="min-width:0"><button class="nm" data-open="${g.id}">${esc(hhName(u))}</button><small>${esc(h.name)}${ppl>1?`, ${ppl} people`:""}${meals.length?`, ${esc(meals.join(", ").toLowerCase())}`:""}</small></div><div class="kq">${s==="invite"||s==="sent"?`<button data-nudge="${idsOf(u)}" aria-label="Write a message" title="Write a message">${IC.chat}</button>`:""}${couple&&s==="yes"?"":qa.map(([v,i,l])=>`<button data-rs="${v}" aria-label="${l}" title="${l}">${i}</button>`).join("")}</div></div>`};
+  const body=COLS.map(([k,l])=>{const arr=unitsOf(by[k]),lim=colLimit[k]||60,head=by[k].reduce((s,g)=>s+g.party,0);
+    return`<div class="col" data-col="${k}"><div class="colh"><div class="t"><h3 style="--c:${STAGE[k].c}"><i></i>${l}</h3><span class="ct">${arr.length}</span></div><small>${pl(arr.length,"invitation","invitations")}, ${pl(head,"person","people")}</small>${k==="invite"&&arr.length?`<button class="btn" id="sendAll" style="margin-top:.3rem">${IC.raven}Mark all ${arr.length} sent</button>`:""}</div>
     <div class="cards">${arr.slice(0,lim).map(card).join("")||`<p class="empty-s" style="padding:.5rem">${k==="invite"?"Summon guests in council to fill this column.":"Drag a card here."}</p>`}${arr.length>lim?`<button class="more" data-more="${k}">Show ${arr.length-lim} more</button>`:""}</div></div>`}).join("");
   if(update&&$("#kanban")){$("#kanban").innerHTML=body}
-  else $("#views").innerHTML=`<section class="view" aria-labelledby="vT"><div class="vh"><div><h2 id="vT" class="gold-text">Ravens</h2><p>Your invitation pipeline. Drag guests between columns or use the quick buttons. Only summoned guests appear here.</p></div></div>
+  else $("#views").innerHTML=`<section class="view" aria-labelledby="vT"><div class="vh"><div><h2 id="vT" class="gold-text">Ravens</h2><p>Your invitation pipeline, one card per invitation. Drag a card between columns or use its buttons. The message button writes the invitation or reminder for you.</p></div></div>
     <div class="filters"><input class="inp search" id="rvQ" type="search" placeholder="Search a name" value="${esc(rvF.q)}" aria-label="Search"><select class="sel" id="rvH" aria-label="House"><option value="all">All houses</option>${HOUSES.map(h=>`<option value="${h.key}" ${rvF.house===h.key?"selected":""}>${esc(h.name)}</option>`).join("")}</select></div>
     <div class="kanban" id="kanban">${body}</div></section>`;
   if(keepScroll)$$(".cards").forEach((c,i)=>c.scrollTop=keepScroll[i]||0);
@@ -1062,12 +1205,12 @@ function renderRavens(update){
 }
 function wireKanban(){
   const sa=$("#sendAll");if(sa)sa.onclick=async()=>{const L=GUESTS.filter(g=>stage(g)==="invite"&&(rvF.house==="all"||g.house===rvF.house));if(!L.length||!canWrite())return;
-    if(!(await confirmBox(`Send ${pl(L.length,"raven","ravens")}?`,"Marks every guest in To invite as invited. Do this once the invitations are actually out.","Send them")))return;
-    L.forEach(g=>patch(g.id,{rsvp:"sent"},"Raven sent",{silent:true}));play("raven");notice("The ravens fly",`${pl(L.length,"invitation","invitations")} marked as sent.`)};
+    if(!(await confirmBox(`Mark ${pl(unitsOf(L).length,"invitation","invitations")} sent?`,"Moves everyone in To invite to Raven sent. Do this once the invitations are actually out.","Mark them sent")))return;
+    const snap=snapshot(L.map(g=>g.id));L.forEach(g=>patch(g.id,{rsvp:"sent"},"Raven sent",{silent:true}));play("raven");undoable("The ravens fly",`${pl(unitsOf(L).length,"invitation","invitations")} marked as sent.`,snap)};
   $$("[data-more]").forEach(b=>b.onclick=()=>{colLimit[b.dataset.more]=(colLimit[b.dataset.more]||60)+200;renderRavens(true)});
-  $$(".kcard").forEach(c=>{c.addEventListener("dragstart",e=>{e.dataTransfer.setData("text/plain",c.dataset.id);e.dataTransfer.effectAllowed="move";c.classList.add("dragging")});c.addEventListener("dragend",()=>c.classList.remove("dragging"))});
+  $$(".kcard").forEach(c=>{c.addEventListener("dragstart",e=>{e.dataTransfer.setData("text/plain",c.dataset.ids);e.dataTransfer.effectAllowed="move";c.classList.add("dragging")});c.addEventListener("dragend",()=>c.classList.remove("dragging"))});
   $$(".col").forEach(col=>{col.addEventListener("dragover",e=>{e.preventDefault();col.classList.add("over")});col.addEventListener("dragleave",e=>{if(!col.contains(e.relatedTarget))col.classList.remove("over")});
-    col.addEventListener("drop",e=>{e.preventDefault();col.classList.remove("over");const id=e.dataTransfer.getData("text/plain"),k=col.dataset.col,g=BYID[id];if(!g||stage(g)===k)return;setRsvp(id,k==="invite"?null:k)})});
+    col.addEventListener("drop",e=>{e.preventDefault();col.classList.remove("over");const u=unitById(e.dataTransfer.getData("text/plain")),k=col.dataset.col;if(!u.length||stage(u[0])===k)return;rsvpMany(u.map(g=>g.id),k==="invite"?null:k)})});
 }
 
 /* =================================================================== GUESTS (RECORDS) */
@@ -1108,28 +1251,34 @@ function renderBulk(){const h=$("#bulkHost");if(!h)return;[...SEL].forEach(id=>{
   h.innerHTML=`<div class="bulk"><b>${SEL.size} selected</b><button class="btn" data-b="in">Summon</button><button class="btn" data-b="maybe">Maybe</button><button class="btn danger" data-b="out">Strike</button><button class="btn" data-b="sent">Raven sent</button><button class="btn" data-b="yes">Attending</button><button class="btn" data-b="no">Declined</button><button class="link" data-b="clear">Clear</button></div>`;
   h.querySelectorAll("[data-b]").forEach(b=>b.onclick=async()=>{const k=b.dataset.b;if(k==="clear"){SEL.clear();renderGuests(true);return}if(!canWrite())return;
     const ids=[...SEL].filter(id=>BYID[id]&&!BYID[id].couple);
-    if(k==="out"){const sw=ids.filter(id=>sworn(BYID[id]));if(!(await confirmBox(`Strike ${pl(ids.length,"guest","guests")}?`,sw.length?`${sw.length} of them are on a must-have list.`:"They will be removed from the feast.","Strike them",true)))return}
-    ids.forEach(id=>{if(["in","maybe","out"].includes(k))setDecision(id,k);else patch(id,{d:"in",rsvp:k},k==="sent"?"Raven sent":k==="yes"?"Will attend":"Declined",{silent:true})});
-    play(k==="out"||k==="no"?"strike":k==="sent"?"raven":"summon");notice("Ledger updated",`${pl(ids.length,"guest","guests")} changed.`);SEL.clear();renderGuests(true)})}
+    if(k==="out"){const sw=ids.filter(id=>sworn(BYID[id]));if(!(await confirmBox(`Strike ${pl(ids.length,"guest","guests")}?`,sw.length?`${sw.length} of them are on a must-have list.`:"They will be removed from the feast. You can undo this.","Strike them",true)))return}
+    const snap=snapshot(ids);
+    if(["in","maybe","out"].includes(k))decideMany(ids,k);else each(ids,(id,o)=>patch(id,{d:"in",rsvp:k},k==="sent"?"Raven sent":k==="yes"?"Will attend":"Declined",o));
+    play(k==="out"||k==="no"?"strike":k==="sent"?"raven":"summon");undoable("Ledger updated",`${pl(ids.length,"guest","guests")} changed.`,snap);SEL.clear();renderGuests(true)})}
 
 /* =================================================================== DRAWER (RECORD) */
 let drawerId=null;
 function openDrawer(id){const g=BYID[id];if(!g)return;drawerId=id;play("flip");renderDrawer(true)}
 function closeDrawer(){drawerId=null;$("#drawerHost").innerHTML=""}
+function hhSection(g,ro){if(g.couple)return"";const hh=household(g),others=hh.filter(x=>x.id!==g.id);
+  const inHH=new Set(hh.map(x=>x.id)),cand=[g.house,...HOUSES.map(h=>h.key).filter(k=>k!==g.house)].map(k=>{const L=GUESTS.filter(x=>x.house===k&&!inHH.has(x.id)&&!x.couple).sort((a,b)=>a.name.localeCompare(b.name));return L.length?`<optgroup label="${esc(H[k].name)}">${L.map(x=>`<option value="${x.id}">${esc(x.name)}${x.hh?` (with ${esc(firstNames(household(x).filter(y=>y.id!==x.id)))})`:""}</option>`).join("")}</optgroup>`:""}).join("");
+  return`<div class="dsec"><h4>HOUSEHOLD</h4>${others.length?`<p class="note-s" style="margin:0 0 .4rem">One invitation, one envelope, one table. Decide for each person here.</p><ul class="rows">${others.map(rowHTML).join("")}</ul>`:`<p class="note-s" style="margin:0 0 .5rem">Listed on their own. Add the people who share their invitation.</p>`}
+    ${ro?"":`<div class="ctlrow" style="margin-top:.6rem"><select class="sel" id="hhAdd" aria-label="Add someone to this household"><option value="">Add someone to this household</option>${cand}</select>${others.length?`<button class="link" id="hhLeave">List ${esc(g.name.split(" ")[0])} on their own</button>`:""}</div>`}</div>`}
 function renderDrawer(first){
   const g=BYID[drawerId];if(!g){closeDrawer();return}
   const host=$("#drawerHost");if(!first&&host.contains(document.activeElement)&&document.activeElement.matches("input,textarea,select"))return;
   const h=H[g.house],s=stage(g),ro=Store.readOnly;
   resolveNames(g.hist.map(e=>e.by).filter(Boolean));
   const seg=(name,opts,cur)=>`<div class="segl" role="group" aria-label="${name}">${opts.map(([v,l,c])=>`<button data-${name}="${v}" aria-pressed="${cur===v}" style="--c:${c}" ${ro||g.couple?"disabled":""}>${l}</button>`).join("")}</div>`;
-  const warns=[];if(g.twice)warns.push("This name appears more than once on the roll. Check it is not the same person.");if(g.uncertain)warns.push("The original list marked this name with a question.");if(g.plusone)warns.push("A guest whose name is not yet known. Fill in the name above when you learn it.");if(g.group)warns.push("This line stands for several children. Set the party size to match.");
+  const warns=[];if(g.twice)warns.push("This person may be on the roll twice. Use Tidy the roll in the War Room to merge them.");if(g.partial)warns.push("Only a first name was written down. Add a surname above.");if(g.uncertain)warns.push("The original list marked this name with a question.");if(g.plusone)warns.push("A guest whose name is not yet known. Fill in the name above when you learn it.");if(g.group)warns.push("This line stands for several children. Set the party size to match.");
   const tables=Array.from({length:Store.meta.tables},(_,i)=>i+1);
   host.innerHTML=`<div class="drawer-bg" id="dBg"></div><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="dName" style="--glow:${mix(h.field,"#ffd890",.4)};--glow2:${h.field}99">
     <div class="dhead"><button class="iconbtn close" id="dClose" aria-label="Close">${IC.close}</button><div class="who">${shieldSVG(h.key,"sh")}<div style="min-width:0;flex:1"><input class="nm" id="dName" value="${esc(g.name)}" aria-label="Guest name" ${ro||g.couple?"readonly":""}><div class="epi">${esc(g.epi)}, of ${esc(h.name)}</div></div></div></div>
     <div class="dbody">
       ${warns.length?`<div class="warnbox">${warns.map(esc).join("<br>")}</div>`:""}
+      ${hhSection(g,ro)}
       <div class="dsec"><h4>DECISION</h4>${g.couple?`<p class="locked">${g.couple==="groom"?"The groom":"The bride"}. Always summoned.</p>`:seg("d",[["in","Summon","#f0c665"],["maybe","Maybe","#8fb3d9"],["out","Strike","#e0485a"]],g.d)}</div>
-      <div class="dsec"><h4>INVITATION</h4>${seg("rsvp",[["none","To invite","#f0c665"],["sent","Raven sent","#9bb7ff"],["yes","Attending","#7fcf9f"],["no","Declined","#e0485a"]],g.d!=="in"?"":g.rsvp||"none")}${g.d!=="in"?`<p class="note-s">Choosing an invitation stage also summons the guest.</p>`:""}</div>
+      <div class="dsec"><h4>INVITATION${household(g).length>1?` <small>for the household</small>`:""}</h4>${seg("rsvp",[["none","To invite","#f0c665"],["sent","Raven sent","#9bb7ff"],["yes","Attending","#7fcf9f"],["no","Declined","#e0485a"]],g.d!=="in"?"":g.rsvp||"none")}${g.d!=="in"?`<p class="note-s">Choosing an invitation stage also summons the guest.</p>`:""}</div>
       <div class="dsec"><h4>PARTY AND TABLE</h4><div class="dgrid">
         <div class="field">Party size<div class="stepper"><button data-party="-1" aria-label="Fewer" ${ro?"disabled":""}>−</button><span>${g.party}</span><button data-party="1" aria-label="More" ${ro?"disabled":""}>+</button></div></div>
         <label class="field">Table<select class="sel" data-f="table" ${ro?"disabled":""}><option value="">Not seated</option>${tables.map(t=>`<option value="${t}" ${+g.table===t?"selected":""}>Table ${t}</option>`).join("")}</select></label>
@@ -1140,7 +1289,7 @@ function renderDrawer(first){
       <div class="dsec"><h4>CONTACT</h4><div class="dgrid">
         <label class="field">Email<input class="inp" type="email" data-f="email" value="${esc(g.email||"")}" ${ro?"readonly":""}></label>
         <label class="field">Phone<input class="inp" type="tel" data-f="phone" value="${esc(g.phone||"")}" ${ro?"readonly":""}></label>
-        <label class="field wide">Mailing address<textarea class="inp" rows="2" data-f="addr" ${ro?"readonly":""}>${esc(g.addr||"")}</textarea></label>
+        <label class="field wide">Mailing address${household(g).length>1?" (shared with the household)":""}<textarea class="inp" rows="2" data-f="addr" ${ro?"readonly":""}>${esc(g.addr||"")}</textarea></label>
         <label class="field wide">House<select class="sel" data-f="house" ${ro||g.couple?"disabled":""}>${HOUSES.map(x=>`<option value="${x.key}" ${g.house===x.key?"selected":""}>${esc(x.name)}</option>`).join("")}</select></label>
       </div></div>
       <div class="dsec"><h4>TAGS</h4><div class="tagset">${TAGS.map(t=>`<button data-tag="${t}" aria-pressed="${g.tags.includes(t)}" ${ro?"disabled":""}>${t}</button>`).join("")}</div></div>
@@ -1152,11 +1301,14 @@ function renderDrawer(first){
   if(first)$("#dClose").focus();
   const D=host.querySelector(".drawer");
   D.querySelectorAll("[data-d]").forEach(b=>b.onclick=async()=>{const v=b.dataset.d,cur=g.d;const nv=cur===v?null:v;if(nv==="out"&&!(await strikeGuard(g)))return;if(setDecision(g.id,nv)){play(nv==="in"?"summon":nv==="out"?"strike":"maybe");renderDrawer(true)}});
-  D.querySelectorAll("[data-rsvp]").forEach(b=>b.onclick=()=>{const v=b.dataset.rsvp;if(setRsvp(g.id,v==="none"?null:v))renderDrawer(true)});
+  D.querySelectorAll("[data-rsvp]").forEach(b=>b.onclick=()=>{const v=b.dataset.rsvp;if(rsvpMany(inviteIds(g),v==="none"?null:v))renderDrawer(true)});
+  const ha=$("#hhAdd");if(ha)ha.onchange=()=>{if(ha.value)joinHousehold(ha.value,g.id);renderDrawer(true)};
+  const hl=$("#hhLeave");if(hl)hl.onclick=()=>{splitHousehold([g.id]);renderDrawer(true)};
   D.querySelectorAll("[data-party]").forEach(b=>b.onclick=()=>{const n=Math.max(1,Math.min(12,g.party+ +b.dataset.party));if(patch(g.id,{party:n},`Party size set to ${n}`,{silent:true}))renderDrawer(true)});
   D.querySelectorAll("[data-tag]").forEach(b=>b.onclick=()=>{const t=b.dataset.tag,tags=g.tags.includes(t)?g.tags.filter(x=>x!==t):[...g.tags,t];if(patch(g.id,{tags},null,{silent:true}))renderDrawer(true)});
   D.querySelectorAll("[data-f]").forEach(el=>{const f=el.dataset.f;el.addEventListener("change",()=>{let v=el.value.trim();
-    if(f==="table"){v=v?+v:null;if(v&&!coming(g)){notice("Not coming","Only summoned guests who have not declined can be seated.","warn");el.value="";return}if(patch(g.id,{table:v},v?`Seated at table ${v}`:"Unseated",{silent:true}))play("seat");return}
+    if(f==="table"){v=v?+v:null;if(v&&!coming(g)){notice("Not coming","Only summoned guests who have not declined can be seated.","warn");el.value="";return}const ids=[g.id,...household(g).filter(x=>x.id!==g.id&&coming(x)&&(x.table||null)===(g.table||null)).map(x=>x.id)];if(each(ids,(id,o)=>patch(id,{table:v},v?`Seated at table ${v}`:"Unseated",{silent:true})))play("seat");return}
+    if(f==="addr"){const ids=household(g).filter(x=>x.id===g.id||!x.addr||x.addr===g.addr).map(x=>x.id);if((g.addr||"")===v)return;each(ids,id=>patch(id,{addr:v},"Address updated",{silent:true}));return}
     if(f==="house"){patch(g.id,{house:v},`Moved to ${H[v].name}`,{silent:true});renderDrawer(true);return}
     const labels={plus:"Plus-one",meal:"Meal",diet:"Dietary needs",email:"Email",phone:"Phone",addr:"Address",notes:"Notes"};
     if((g[f]||"")===v)return;patch(g.id,{[f]:v},`${labels[f]} updated`,{silent:true})})});
@@ -1169,31 +1321,39 @@ function renderDrawer(first){
 let picked=null;
 function renderHall(update){
   const T=Store.meta.tables,P=Store.meta.per,elig=GUESTS.filter(coming),un=elig.filter(g=>!g.table);
-  const ho=Object.fromEntries(HOUSES.map((h,i)=>[h.key,i]));un.sort((a,b)=>ho[a.house]-ho[b.house]);
+  const ho=Object.fromEntries(HOUSES.map((h,i)=>[h.key,i]));un.sort((a,b)=>ho[a.house]-ho[b.house]);const UN=unitsOf(un);
   const byT={};elig.forEach(g=>{if(g.table){(byT[g.table]=byT[g.table]||[]).push(g)}});
   const seatsUsed=t=>(byT[t]||[]).reduce((s,g)=>s+g.party,0);
   const unHead=un.reduce((s,g)=>s+g.party,0);
   const tbl=t=>{const used=seatsUsed(t),list=byT[t]||[];let dots="";for(let i=0;i<P;i++){const a=i/P*Math.PI*2-Math.PI/2;dots+=`<circle cx="${60+Math.cos(a)*46}" cy="${60+Math.sin(a)*46}" r="7" fill="${i<used?"#deb870":"#1b2440"}" stroke="${i<used?"#f6e2a8":"#3a4668"}" stroke-width="1.2"/>`}
     return`<div class="tbl ${picked?"target":""} ${used===P?"full":""} ${used>P?"excess":""}" data-t="${t}" tabindex="0" aria-label="Table ${t}, ${used} of ${P} seats"><svg class="round" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="32" fill="#2a2113" stroke="#8d6a2e" stroke-width="2"/><circle cx="60" cy="60" r="26" fill="none" stroke="#deb870" stroke-opacity=".3"/><text x="60" y="66" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="18" fill="#f6e2a8">${t}</text>${dots}</svg>
-    <h4>Table ${t}</h4><div class="tv">${used} of ${P} seats${used>P?", over":""}</div><ul>${list.map(g=>`<li><span>${esc(g.name)}${g.party>1?` +${g.party-1}`:""}</span><button data-unseat="${g.id}" aria-label="Unseat ${esc(g.name)}">×</button></li>`).join("")}</ul></div>`};
-  const html=`<section class="view" aria-labelledby="vT"><div class="vh"><div><h2 id="vT" class="gold-text">The Great Hall</h2><p>Seat everyone who is coming. Drag a guest onto a table, or tap a guest and then tap a table.</p></div>
-    <div class="acts-r"><button class="btn gold" id="autoSeat">${IC.table}Seat the rest by house</button><button class="btn" id="hallSet">Tables and seats</button><button class="btn danger" id="clearSeats">Clear seating</button></div></div>
-    <div class="hall"><div class="panel unseated"><div class="ph" style="margin:0"><h3>Awaiting a seat</h3><small>${pl(un.length,"party","parties")}, ${unHead} people</small></div>
-      <div class="ulist">${un.map(g=>`<button class="gchip ${picked===g.id?"picked":""}" draggable="${!Store.readOnly}" data-pick="${g.id}">${mini(g.house)}<span>${esc(g.name)}</span>${g.party>1?`<em>party of ${g.party}</em>`:""}</button>`).join("")||`<p class="empty-s">Everyone coming has a seat.</p>`}</div></div>
+    <h4>${list.some(g=>g.couple)?"Head table":"Table "+t}</h4><div class="tv">${used} of ${P} seats${used>P?", over":""}</div><ul>${list.map(g=>`<li><span>${esc(g.name)}${g.party>1?` +${g.party-1}`:""}</span><button data-unseat="${g.id}" aria-label="Unseat ${esc(g.name)}">×</button></li>`).join("")}</ul></div>`};
+  const html=`<section class="view" aria-labelledby="vT"><div class="vh"><div><h2 id="vT" class="gold-text">The Great Hall</h2><p>Seat everyone who is coming. Households stay together. Drag a household onto a table, or tap it and then tap a table.</p></div>
+    <div class="acts-r"><button class="btn gold" id="autoSeat">${IC.table}Seat the rest for me</button><button class="btn" id="printHall">${IC.print}Print seating</button><button class="btn" id="hallSet">Tables and seats</button><button class="btn danger" id="clearSeats">Clear seating</button></div></div>
+    <div class="hall"><div class="panel unseated"><div class="ph" style="margin:0"><h3>Awaiting a seat</h3><small>${pl(UN.length,"household","households")}, ${unHead} people</small></div>
+      <div class="ulist">${UN.map(u=>`<button class="gchip ${picked===idsOf(u)?"picked":""}" draggable="${!Store.readOnly}" data-pick="${idsOf(u)}">${mini(u[0].house)}<span>${esc(hhName(u))}</span>${partyOf(u)>1?`<em>${partyOf(u)}</em>`:""}</button>`).join("")||`<p class="empty-s">Everyone coming has a seat.</p>`}</div></div>
       <div class="tables">${Array.from({length:T},(_,i)=>tbl(i+1)).join("")}</div></div></section>`;
   const y=update?scrollY:null;$("#views").innerHTML=html;if(y!=null)window.scrollTo(0,y);
   $$("[data-pick]").forEach(b=>{b.onclick=()=>{picked=picked===b.dataset.pick?null:b.dataset.pick;renderHall(true)};b.addEventListener("dragstart",e=>{e.dataTransfer.setData("text/plain",b.dataset.pick)})});
-  $$(".tbl").forEach(t=>{const seat=id=>{if(!id)return;const g=BYID[id];if(!g)return;const n=+t.dataset.t;if(seatsUsed(n)+g.party>P)notice("Crowded table",`Table ${n} will be over its ${P} seats.`,"warn");if(patch(id,{table:n},`Seated at table ${n}`,{silent:true}))play("seat");picked=null};
+  $$(".tbl").forEach(t=>{const seat=ids=>{const u=unitById(ids);if(!u.length)return;const n=+t.dataset.t;if(seatsUsed(n)+partyOf(u)>P)notice("Crowded table",`Table ${n} will be over its ${P} seats.`,"warn");picked=null;if(each(u.map(g=>g.id),id=>patch(id,{table:n},`Seated at table ${n}`,{silent:true})))play("seat")};
     t.onclick=e=>{if(e.target.closest("[data-unseat]"))return;if(picked)seat(picked)};t.onkeydown=e=>{if(e.key==="Enter"&&picked)seat(picked)};
     t.addEventListener("dragover",e=>{e.preventDefault();t.classList.add("over")});t.addEventListener("dragleave",()=>t.classList.remove("over"));t.addEventListener("drop",e=>{e.preventDefault();t.classList.remove("over");seat(e.dataTransfer.getData("text/plain"))})});
   $$("[data-unseat]").forEach(b=>b.onclick=()=>{if(patch(b.dataset.unseat,{table:null},"Unseated",{silent:true}))play("flip")});
   $("#autoSeat").onclick=()=>{if(!canWrite())return;const used={};for(let t=1;t<=T;t++)used[t]=seatsUsed(t);const houseAt={};elig.forEach(g=>{if(g.table)(houseAt[g.house]=houseAt[g.house]||new Set()).add(g.table)});let n=0,left=0;
-    un.forEach(g=>{let pick=null;const pref=[...(houseAt[g.house]||[])];for(const t of pref)if(used[t]+g.party<=P){pick=t;break}
-      if(!pick)for(let t=1;t<=T;t++)if(used[t]===0&&g.party<=P){pick=t;break}if(!pick)for(let t=1;t<=T;t++)if(used[t]+g.party<=P){pick=t;break}
-      if(!pick){left++;return}used[pick]+=g.party;(houseAt[g.house]=houseAt[g.house]||new Set()).add(pick);patch(g.id,{table:pick},`Seated at table ${pick}`,{silent:true});n++});
-    play("seat");notice("The hall is arranged",`${pl(n,"party","parties")} seated with their houses.${left?` ${left} could not fit. Add tables in settings.`:""}`,left?"warn":"good")};
+    // the couple and anyone tagged "Wedding party" share the head table; everyone else sits with their house
+    const isCouple=u=>u.some(x=>x.couple),isParty=u=>u.every(x=>x.tags.includes("Wedding party"));
+    const head=elig.find(g=>g.couple&&g.table)?.table||1,headOK=(u,t)=>t!==head||isCouple(u)||isParty(u);
+    const snap=snapshot(un.map(g=>g.id)),order=[...UN].sort((a,b)=>partyOf(b)-partyOf(a)).sort((a,b)=>ho[a[0].house]-ho[b[0].house]).sort((a,b)=>(isCouple(b)-isCouple(a))||(isParty(b)-isParty(a)));
+    order.forEach(u=>{const g=u[0],need=partyOf(u),fits=t=>used[t]+need<=P&&headOK(u,t);let pick=null;
+      if(isCouple(u)||isParty(u))pick=fits(head)?head:null;
+      if(!pick)for(const t of houseAt[g.house]||[])if(fits(t)){pick=t;break}
+      if(!pick)for(let t=1;t<=T;t++)if(used[t]===0&&fits(t)){pick=t;break}
+      if(!pick){let best=0;for(let t=1;t<=T;t++)if(fits(t)&&(!best||used[t]>used[best]))best=t;pick=best||null}
+      if(!pick){left++;return}used[pick]+=need;(houseAt[g.house]=houseAt[g.house]||new Set()).add(pick);u.forEach(x=>patch(x.id,{table:pick},`Seated at table ${pick}`,{silent:true}));n++});
+    play("seat");undoable("The hall is arranged",`${pl(n,"household","households")} seated, kept together and near their house.${left?` ${left} could not fit. Add tables in settings.`:""}`,snap,left?"warn":"good")};
+  $("#printHall").onclick=printSeating;
   $("#hallSet").onclick=openSettings;
-  $("#clearSeats").onclick=async()=>{if(!canWrite())return;const S=elig.filter(g=>g.table);if(!S.length)return;if(!(await confirmBox("Clear every seat?",`${pl(S.length,"party","parties")} will return to the waiting list.`,"Clear seating",true)))return;S.forEach(g=>patch(g.id,{table:null},"Unseated",{silent:true}))};
+  $("#clearSeats").onclick=async()=>{if(!canWrite())return;const S=elig.filter(g=>g.table);if(!S.length)return;if(!(await confirmBox("Clear every seat?",`${pl(S.length,"guest","guests")} will return to the waiting list. You can undo this.`,"Clear seating",true)))return;const snap=snapshot(S.map(g=>g.id));S.forEach(g=>patch(g.id,{table:null},"Unseated",{silent:true}));undoable("Seating cleared","Everyone is back on the waiting list.",snap,"warn")};
 }
 
 /* =================================================================== REALM (MAP + BANNERS) */
@@ -1294,7 +1454,7 @@ function renderRoster(first){
   const ov=$("#ov");document.body.style.overflow="hidden";ov.addEventListener("click",e=>{if(e.target===ov)closeRoster()});$("#ovClose").onclick=closeRoster;
   $("#ovJudge").onclick=()=>{closeRoster();councilHouse=k;councilMode="none";go("council")};
   $("#ovAll").onclick=async()=>{const und=gs.filter(g=>!g.couple&&!g.d);if(!und.length){notice("Nothing to summon","Every name here already has a decision.");return}if(!canWrite())return;
-    if(!(await confirmBox(`Summon ${pl(und.length,"name","names")}?`,`Every undecided name in ${h.name} will be summoned to the feast.`,"Summon them")))return;und.forEach(g=>patch(g.id,{d:"in"},"Summoned to the feast",{silent:true}));play("summon")};
+    if(!(await confirmBox(`Summon ${pl(und.length,"name","names")}?`,`Every undecided name in ${h.name} will be summoned to the feast.`,"Summon them")))return;const snap=snapshot(und.map(g=>g.id));und.forEach(g=>patch(g.id,{d:"in"},"Summoned to the feast",{silent:true}));play("summon");undoable("Summoned",`${pl(und.length,"name","names")} summoned from ${h.name}.`,snap)};
   if(first)$("#ovClose").focus();
 }
 function closeRoster(){$("#overlayHost").innerHTML="";rosterKey=null;document.body.style.overflow="";if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true})}
@@ -1321,13 +1481,76 @@ async function openSettings(){
     (mm)=>{mm.addEventListener("click",e=>{const b=e.target.closest("[data-r=save]");if(b){window.__set={date:mm.querySelector("#sDate").value,cap:+mm.querySelector("#sCap").value,cost:+mm.querySelector("#sCost").value,tables:+mm.querySelector("#sT").value,per:+mm.querySelector("#sP").value}}},true)});
   if(r==="save"&&window.__set){if(!canWrite())return;const s=window.__set;Store.meta.date=s.date||"";if(s.cap>0)Store.meta.cap=Math.round(s.cap);if(s.cost>=0)Store.meta.cost=s.cost;if(s.tables>0)Store.meta.tables=Math.min(120,Math.round(s.tables));if(s.per>1)Store.meta.per=Math.min(24,Math.round(s.per));Store.saveMeta();changed();notice("Settings saved","The realm has been updated.")}
   if(r==="reset"){if(!canWrite())return;if(!(await confirmBox("Clear every decision?","Every summons, invitation, reply and seat will be forgotten. Contact details and notes stay.","Clear decisions",true)))return;
-    Object.keys(Store.rec).forEach(id=>{const x=JSON.parse(JSON.stringify(Store.rec[id]));if(x.d||x.rsvp||x.table){x.d=null;x.rsvp=null;x.table=null;Store.rec[id]=x;Store.save(id)}});changed();notice("The slate is clean","Every decision has been cleared.")}
+    const ids=Object.keys(Store.rec).filter(id=>{const x=Store.rec[id];return x&&(x.d||x.rsvp||x.table)}),snap=snapshot(ids);
+    ids.forEach(id=>{const x=JSON.parse(JSON.stringify(Store.rec[id]));x.d=null;x.rsvp=null;x.table=null;Store.rec[id]=x;Store.save(id,["d","rsvp","table"])});changed();undoable("The slate is clean","Every decision has been cleared.",snap,"warn")}
   delete window.__set;
 }
+/* messages: the invitation or reminder, written for you */
+function weddingDate(){if(!Store.meta.date)return"";const d=new Date(Store.meta.date+"T12:00:00");return isNaN(d)?"":d.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"})}
+async function nudge(ids){const u=unitById(ids);if(!u.length)return;const s=stage(u[0]),who=firstNames(u)||u[0].name,date=weddingDate(),many=u.length>1;
+  const txt=s==="invite"?`Hi ${who}! Chris and Nancy would love ${many?"you all":"you"} to celebrate their wedding with them${date?` on ${date}`:""}. Your invitation is on its way. Please save the date!`
+    :`Hi ${who}! Just checking that ${"you"} received the invitation to Chris and Nancy's wedding${date?` on ${date}`:""}. Could you let us know if you can make it? Thank you!`;
+  const ph=u.map(g=>g.phone).find(Boolean),dg=ph?String(ph).replace(/\D/g,""):"",wa=dg?`https://wa.me/${dg.length===10?"1"+dg:dg}`:"";
+  await modal(`<h3>${s==="invite"?"Invite":"Remind"} ${esc(hhName(u))}</h3><p class="lead">${ph?`Edit the message, then send it on WhatsApp or copy it.`:`Edit the message and copy it. Add a phone number to their record to open WhatsApp from here.`}</p>
+    <textarea class="inp" id="nMsg" rows="5">${esc(txt)}</textarea>
+    <div class="mbtns"><button class="btn" data-r="cancel">Close</button><button class="btn" id="nCopy">${IC.copy}Copy</button>${wa?`<a class="btn gold" id="nWa" href="${wa}" target="_blank" rel="noopener">${IC.chat}Open WhatsApp</a>`:""}</div>
+    <p class="note-s" style="text-align:center">${s==="invite"?`Sent it? Tap the raven on their card to move them to Raven sent.`:`When they reply, tap attending or declined on their card.`}</p>`,
+    (m)=>{const ta=m.querySelector("#nMsg");m.querySelector("#nCopy").onclick=()=>copyText(ta.value,"Message copied. Paste it anywhere.");const a=m.querySelector("#nWa");if(a){const upd=()=>a.href=`${wa}?text=${encodeURIComponent(ta.value)}`;upd();ta.addEventListener("input",upd)}})}
+
+/* printing: seating chart, escort cards, caterer counts */
+function seatingDoc(){const T=Store.meta.tables,elig=GUESTS.filter(coming),byT={};elig.forEach(g=>{if(g.table)(byT[g.table]=byT[g.table]||[]).push(g)});
+  const nm=g=>esc(g.name)+(g.party>1?` <i>+${g.party-1}</i>`:""),sk=g=>{const t=norm(g.name).split(" ");return t[t.length-1]+" "+t[0]};
+  const tables=Array.from({length:T},(_,i)=>i+1).filter(t=>byT[t]).map(t=>`<div class="pt"><h3>Table ${t}${byT[t].some(g=>g.couple)?", head table":""}</h3><ol>${byT[t].map(g=>`<li>${nm(g)}</li>`).join("")}</ol></div>`).join("");
+  const escort=elig.filter(g=>g.table).sort((a,b)=>sk(a).localeCompare(sk(b))).map(g=>`<li><span>${esc(g.name)}</span><b>${g.table}</b></li>`).join("");
+  const meals={};let unknown=0;const rows=Array.from({length:T},(_,i)=>i+1).filter(t=>byT[t]).map(t=>{const c={};byT[t].forEach(g=>{const k=g.meal||"Not chosen";c[k]=(c[k]||0)+g.party;meals[k]=(meals[k]||0)+g.party});const di=byT[t].filter(g=>g.diet).map(g=>`${esc(g.name)}: ${esc(g.diet)}`).join("; ");
+    return`<tr><td>Table ${t}</td>${[...MEALS,"Not chosen"].map(m=>`<td>${c[m]||""}</td>`).join("")}<td>${di}</td></tr>`}).join("");
+  const unseated=elig.filter(g=>!g.table);
+  return`<div class="pp"><h1>Seating chart</h1><p>${pl(elig.reduce((s,g)=>s+g.party,0),"guest","guests")} expected${weddingDate()?`, ${esc(weddingDate())}`:""}.${unseated.length?` ${pl(unseated.length,"guest is","guests are")} not seated yet.`:""}</p><div class="ptables">${tables||"<p>No one is seated yet.</p>"}</div></div>
+  <div class="pp"><h1>Find your table</h1><ul class="pescort">${escort}</ul></div>
+  <div class="pp"><h1>For the caterer</h1><table class="pmeal"><thead><tr><th></th>${[...MEALS,"Not chosen"].map(m=>`<th>${m}</th>`).join("")}<th>Dietary needs</th></tr></thead><tbody>${rows}<tr class="tot"><td>Total</td>${[...MEALS,"Not chosen"].map(m=>`<td>${meals[m]||""}</td>`).join("")}<td></td></tr></tbody></table></div>`}
+async function printSeating(){const host=$("#printHost");host.innerHTML=seatingDoc();
+  const r=await modal(`<h3>Seating chart</h3><p class="lead">Three pages: every table, an alphabetical find-your-table list, and meal counts for the caterer.</p><div class="mbtns"><button class="btn" data-r="cancel">Close</button><button class="btn" data-r="save">${IC.down}Save as a file</button><button class="btn gold" data-r="print">${IC.print}Print</button></div>`);
+  if(r==="print"){try{window.print()}catch(e){notice("Printing is blocked here","Save it as a file instead, then print that.","warn")}}
+  if(r==="save"){const css=[...document.querySelectorAll("style")].map(x=>x.textContent).join("").match(/\/\* print-sheet \*\/([\s\S]*?)\/\* end print-sheet \*\//);const doc=`<!doctype html><html><head><meta charset="utf-8"><title>Seating chart</title><style>${css?css[1]:""}</style></head><body><div id="printHost" style="display:block">${seatingDoc()}</div></body></html>`;
+    let dl=null;try{dl=await window.claude.use("downloads")}catch(e){}
+    if(dl){try{await dl.save({filename:"seating-chart.html",data:doc});notice("Saved","Open the file and print it.")}catch(e){}}else copyText(doc,"Seating chart copied as a web page.")}}
+
+/* tidy the roll: duplicates, first-name-only and unsure names, one at a time */
+function tidyItems(){const T=[];DUPS.forEach(([a,b])=>T.push({k:"dup",a:a.id,b:b.id}));
+  GUESTS.filter(g=>(g.partial||g.plusone)&&g.d!=="out").forEach(g=>T.push({k:"name",id:g.id}));
+  GUESTS.filter(g=>g.uncertain&&!g.d).forEach(g=>T.push({k:"unsure",id:g.id}));return T}
+const tidyCount=()=>tidyItems().length;
+function tidyCard(g){const s=stage(g);return`<div class="tc" style="--hc:${H[g.house].field}">${mini(g.house)}<b>${esc(g.name)}</b><small>${esc(H[g.house].name)}${sworn(g)?`, sworn by ${sworn(g)}`:""}</small><span>${g.d?chip(DEC[g.d].l,DEC[g.d].c):chip("Undecided","#9ea8bd",1)}${g.d==="in"?chip(STAGE[s].l,STAGE[s].c):""}</span></div>`}
+async function tidy(){if(!canWrite())return;let items=tidyItems(),i=0;const total=items.length;
+  if(!total){notice("The roll is tidy","No duplicates or half-written names left.");return}
+  while(i<items.length){const it=items[i];let html="",ok=true;
+    const head=t=>`<p class="tstep">${i+1} of ${total}</p><h3>${t}</h3>`;
+    if(it.k==="dup"){const a=BYID[it.a],b=BYID[it.b];if(!a||!b||!(a.twice||[]).includes(b.id)){i++;continue}
+      html=`${head("The same person?")}<p class="lead">This name is on the roll twice. Merging keeps one entry and carries over every detail and decision.</p><div class="tpair">${tidyCard(a)}${tidyCard(b)}</div>
+      <div class="mbtns tcol"><button class="btn gold" data-r="ka">Same person, keep in ${esc(H[a.house].name)}</button>${a.house!==b.house?`<button class="btn gold" data-r="kb">Same person, keep in ${esc(H[b.house].name)}</button>`:""}<button class="btn" data-r="diff">Two different people</button></div>`}
+    else{const g=BYID[it.id];if(!g){i++;continue}
+      if(it.k==="name")html=`${head(g.plusone?"Who is the plus-one?":"Who is this?")}<p class="lead">${g.plusone?"Add their name when you know it.":"Only part of the name was written down."} Add the full name so the invitation and place card are right.</p><div class="tpair">${tidyCard(g)}</div><label class="field" style="margin-top:.9rem">Full name<input class="inp" id="tName" value="${g.plusone?"":esc(g.name)}" placeholder="${g.plusone?"e.g. Sarah Haddad":"Add a surname"}"></label>
+        <div class="mbtns"><button class="btn gold" data-r="save">Save name</button></div>`;
+      else html=`${head("Keep this name?")}<p class="lead">The original list wrote a question mark next to this name.</p><div class="tpair">${tidyCard(g)}</div>
+        <div class="mbtns tcol"><button class="btn gold" data-r="keep">Keep, they belong on the roll</button><button class="btn" data-r="maybe">Mark as maybe</button><button class="btn danger" data-r="out">Strike</button></div>`}
+    html+=`<div class="mbtns tfoot"><button class="link" data-r="cancel">Finish later</button>${i>0?`<button class="link" data-r="back">Back</button>`:""}<button class="link" data-r="skip">Skip</button></div>`;
+    let nameVal="";const r=await modal(html,(m,done)=>{const n=m.querySelector("#tName");if(n){n.focus();const sv=m.querySelector("[data-r=save]");sv.addEventListener("click",()=>nameVal=n.value.trim(),true);n.addEventListener("keydown",e=>{if(e.key==="Enter"){nameVal=n.value.trim();done("save")}})}});
+    if(!r||r==="cancel")break;
+    if(r==="back"){i=Math.max(0,i-1);continue}
+    if(r==="skip"){i++;continue}
+    if(r==="ka")mergeGuests(it.a,it.b);else if(r==="kb")mergeGuests(it.b,it.a);else if(r==="diff")markDifferent(it.a,it.b);
+    else if(r==="save"){const g=BYID[it.id];if(nameVal&&nameVal!==g.name)patch(it.id,{name:nameVal,plusone:false},`Named ${nameVal}`,{silent:true});else if(!nameVal){ok=false}}
+    else if(r==="keep")patch(it.id,{uncertain:false},"Confirmed for the roll",{silent:true});
+    else if(r==="maybe")setDecision(it.id,"maybe",{silent:true});
+    else if(r==="out"){const g=BYID[it.id];if(await strikeGuard(g)){const snap=snapshot([g.id]);setDecision(g.id,"out",{silent:true});undoable("Struck",`${g.name} is off the roll.`,snap,"warn")}}
+    if(ok){play("flip");i++}
+  }
+  const left=tidyCount();if(left===0){play("rank");notice("The roll is tidy","Every name is whole and listed once.")}else if(i>=items.length)notice("Tidy for now",`${pl(left,"item is","items are")} left for later.`)}
+
 function csv(){const q=v=>{v=String(v==null?"":v);return/[",\n]/.test(v)?`"${v.replace(/"/g,'""')}"`:v};
-  const head=["Name","House","Decision","Invitation","Party size","Plus-one","Meal","Dietary needs","Table","Email","Phone","Address","Tags","Notes","Flags"];
-  const rows=GUESTS.map(g=>{const s=stage(g),fl=[g.twice&&"listed twice",g.uncertain&&"unsure",g.plusone&&"unnamed guest",g.group&&"several kids",g.abroad&&"abroad"].filter(Boolean).join("; ");
-    return[g.name,H[g.house].name,g.d?DEC[g.d].l:"Undecided",g.d==="in"?STAGE[s].l:"",g.party,g.plus||"",g.meal||"",g.diet||"",g.table||"",g.email||"",g.phone||"",g.addr||"",g.tags.join("; "),g.notes||"",fl].map(q).join(",")});
+  const head=["Name","Household","House","Decision","Invitation","Party size","Plus-one","Meal","Dietary needs","Table","Email","Phone","Address","Tags","Notes","Flags"];
+  const rows=GUESTS.map(g=>{const s=stage(g),fl=[g.twice&&"listed twice",g.uncertain&&"unsure",g.plusone&&"unnamed guest",g.partial&&"first name only",g.group&&"several kids",g.abroad&&"abroad"].filter(Boolean).join("; ");
+    return[g.name,hhName(household(g)),H[g.house].name,g.d?DEC[g.d].l:"Undecided",g.d==="in"?STAGE[s].l:"",g.party,g.plus||"",g.meal||"",g.diet||"",g.table||"",g.email||"",g.phone||"",g.addr||"",g.tags.join("; "),g.notes||"",fl].map(q).join(",")});
   return[head.join(","),...rows].join("\n")}
 async function exportCSV(){const data=csv();let dl=null;try{if(window.claude&&window.claude.use)dl=await window.claude.use("downloads")}catch(e){}
   if(dl){try{await dl.save({filename:"westerwood-guest-list.csv",data});notice("Exported","The guest list was saved as a CSV.");return}catch(e){if(e&&e.code==="declined")return}}
@@ -1342,7 +1565,8 @@ document.addEventListener("click",async e=>{
   const v=e.target.closest("[data-v]");if(v){go(v.dataset.v);return}
   const o=e.target.closest("[data-open]");if(o&&!o.classList.contains("grow")){e.preventDefault();openDrawer(o.dataset.open);return}
   const s=e.target.closest("[data-s]");if(s){const id=s.closest("[data-id]").dataset.id,g=BYID[id],nv=g.d===s.dataset.s?null:s.dataset.s;if(nv==="out"&&!(await strikeGuard(g)))return;if(setDecision(id,nv))play(nv==="in"?"summon":nv==="out"?"strike":"maybe");return}
-  const rs=e.target.closest("[data-rs]");if(rs){const id=rs.closest("[data-id]").dataset.id;setRsvp(id,rs.dataset.rs);return}
+  const rs=e.target.closest("[data-rs]");if(rs){const c=rs.closest("[data-ids]");if(c)rsvpMany(c.dataset.ids.split(","),rs.dataset.rs);return}
+  const nu=e.target.closest("[data-nudge]");if(nu){nudge(nu.dataset.nudge);return}
   const a=e.target.closest("[data-act]");if(a){decide(a.dataset.act)}
 });
 document.addEventListener("keydown",e=>{
@@ -1374,5 +1598,3 @@ Store.connect();
 </script>
 </body>
 </html>
-Westerwood (1).html
-Displaying Westerwood (1).html.
